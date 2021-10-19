@@ -10,14 +10,7 @@ admin.initializeApp({
 
 
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBeDXvk3UC_Wj5WUf8ylIFYfH3nA-5tCcQ",
     authDomain: "shitoryukarate-ea3d5.firebaseapp.com",
@@ -30,8 +23,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+
+
+
+
+
+
+
+
+
 
 
 //  https://shitoryukarate-ea3d5-default-rtdb.firebaseio.com/
@@ -39,3 +40,97 @@ const analytics = getAnalytics(app);
 
 
 //storage   gs://shitoryukarate-ea3d5.appspot.com
+
+
+
+
+
+
+
+
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const database = firebase.firestore();
+const DB = firebase.database();
+
+
+database.settings({ timestampsInSnapshots: true });
+
+
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+       
+    }
+    else {
+
+    }
+
+})
+
+
+// Signing the user in the database
+const signupForm = document.querySelector("#SigninForm");
+
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+
+    const email = signupForm['signin-email'].value;
+    const password = signupForm['signin-password'].value;
+
+
+
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        const model = document.getElementById("signin-Pop");
+        model.style.visibility = "initial";
+
+
+
+    })
+
+
+
+})
+
+
+
+// Login User 
+
+const loginForm = document.querySelector('#loginForm');
+
+loginForm.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const email = loginForm['login-email'].value;
+    const password = loginForm['login-password'].value;
+
+
+
+    auth.signInWithEmailAndPassword(email, password).then(cred => {
+      
+    })
+
+
+
+})
+
+
+
+
+
+// Logout user
+
+
+const logoutBTN = document.getElementById("logout");
+
+logoutBTN.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    auth.signOut().then(() => {
+        
+    })
+})

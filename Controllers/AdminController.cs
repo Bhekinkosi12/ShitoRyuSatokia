@@ -12,5 +12,10 @@ namespace ShitoRyuSatokia.Controllers
         {
             return View();
         }
+        public IActionResult Signin()
+        {
+            return View();
+        }
+
     }
 }
