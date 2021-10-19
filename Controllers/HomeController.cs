@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using ShitoRyuSatokia.Models;
 
 namespace ShitoRyuSatokia.Controllers
 {
@@ -20,7 +21,8 @@ namespace ShitoRyuSatokia.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            AdminViewModel viewModel = new AdminViewModel();
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
