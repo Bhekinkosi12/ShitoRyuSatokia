@@ -5,16 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using ShitoRyuSatokia.Models;
 
-
 namespace ShitoRyuSatokia.Controllers
 {
-    public class AdminController : Controller
+    public class EditController : Controller
     {
         public IActionResult Index()
         {
+            AdminViewModel adminViewModel = new AdminViewModel();
+            return View(adminViewModel);
+        }
+
+        public IActionResult Dojoview()
+        {
             return View();
         }
-        public IActionResult Signin()
+
+
+        [HttpPost]
+
+        public IActionResult Editdojo(string id)
         {
             return View();
         }

@@ -3,18 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ShitoRyuSatokia.Models;
-
 
 namespace ShitoRyuSatokia.Controllers
 {
-    public class AdminController : Controller
+    public class JoinController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Signin()
+
+        [HttpPost]
+
+        public IActionResult Subform()
         {
             return View();
         }

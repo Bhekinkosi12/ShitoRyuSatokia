@@ -1,0 +1,56 @@
+﻿
+@model ShitoRyuSatokia.Models.AdminViewModel
+
+
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center wow fadeInDown" data-wow-duration="0.7s" data-wow-delay="0.1s">
+                <h2 class="heading-section mb-5">Edit Officials Team</h2>
+            </div>
+           
+
+            
+            <div class="col-md-12">
+      
+                    <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                        @foreach (var i in Model.DojoList)
+                        {
+                            <form method="post" action="Editdojo" >
+
+                         
+                            <div style="display: none; visibility: hidden;">
+                                <input type="text" value="@i.ID"name="id" />
+                            </div>
+
+                            <div class="item" style="cursor: pointer;">
+                                <div class="testimony-wrap py-4">
+                                    <div class="text">
+                                        <p class="mb-4">Shihan the chief intructor of shito ryu sato kai South Africa</p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img" style="background-image: url(@i.Dojo_Instructor_Image)"></div>
+                                            <div class="pl-3">
+                                                <p class="name">@i.Dojo_Name</p>
+                                                <span class="position">@i.Dojo_Instructor_Position</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-success" style="margin-top: 10px;"  type="submit">Edit</button>
+                                </div>
+                            </div>
+                                </form>
+                        }
+
+
+                    </div>
+                
+            </div>
+
+
+              
+        </div>
+    </div>
+</section>
