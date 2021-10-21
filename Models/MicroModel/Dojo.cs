@@ -11,10 +11,13 @@ namespace ShitoRyuSatokia.Models.MicroModel
         public string ID { get; set; }
         public string Dojo_Name { get; set; }
         public string Dojo_Instructor { get; set; }
+        public string Dojo_Instructor_Email { get; set; }
+        public string Dojo_Instructor_Number { get; set; }
         public string Dojo_Instructor_Image { get; set;  }
         public string Dojo_Instructor_Position { get; set; }
         public string Dojo_Instructor_Description { get; set;  }
         public string Dojo_Description { get; set; }
+        public string Dojo_Time { get; set; }
         public Dictionary<string, string> Dojo_Schedule { get; set; }
         public string location { get; set; }
         public string Regulation { get; set; }

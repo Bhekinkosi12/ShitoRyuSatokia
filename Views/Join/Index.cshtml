@@ -3,11 +3,13 @@
 *@
 @{
 }
+
+@model ShitoRyuSatokia.Models.JoinViewModel
 <div id="contact" class="contact-us section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-                <form id="contact" action="" method="post">
+                <form id="contact" method="post" action="Subform">
                     <div class="row">
                         <div class="col-lg-6 offset-lg-3">
                             <div class="section-heading">
@@ -19,24 +21,23 @@
                             <div class="row">
                                 <div class="col-lg-6">
 
-
                                     <fieldset>
-                                        <input type="text" name="Dname" id="name" placeholder="Dojo Name" autocomplete="on" required>
+                                        <input type="text" name="Dname"  value="@Model.SelectDojo.Dojo_Name" placeholder="Dojo Name" autocomplete="on" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="text" name="DIname" id="name" placeholder="Head Instructor Name" autocomplete="on" required>
+                                        <input type="text" name="DIname"  placeholder="Head Instructor Name" autocomplete="on" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="email" name="Demail" id="name" placeholder="Head Instructor Email" autocomplete="on" required>
+                                        <input type="email" name="Demail" placeholder="Head Instructor Email" autocomplete="on" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="text" name="DIposition" id="name" placeholder="Head Instructor Position" autocomplete="on" required>
+                                        <input type="text" name="DIposition" placeholder="Head Instructor Position" autocomplete="on" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -46,24 +47,24 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="DIinfo" type="text" class="form-control" id="message" placeholder="Instructors Short description" required=""></textarea>
+                                        <textarea name="DIinfo" type="text" class="form-control"  placeholder="Instructors Short description" required=""></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="Dinfo" type="text" class="form-control" id="message" placeholder="Dojo description" required=""></textarea>
-                                    </fieldset>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <fieldset>
-                                        <textarea name="Drule" type="text" class="form-control" id="message" placeholder="Dojo rules and regulation" required=""></textarea>
+                                        <textarea name="Dinfo" type="text" class="form-control" placeholder="Dojo description" required=""></textarea>
                                     </fieldset>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="Drule" type="text" class="form-control" id="message" placeholder="Dojo Schedule" required=""></textarea>
+                                        <textarea name="Drule" type="text" class="form-control" placeholder="Dojo rules and regulation" required=""></textarea>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="Dtime" type="text" class="form-control" id="message" placeholder="Dojo Schedule" required=""></textarea>
                                     </fieldset>
                                 </div>
 
