@@ -15,17 +15,19 @@ namespace ShitoRyuSatokia.Controllers
             return View(adminViewModel);
         }
 
-        public IActionResult Dojoview()
+        public IActionResult Dojoview(string DojoName)
         {
-            return View();
+            AdminViewModel adminView = new AdminViewModel(DojoName);
+            return View(adminView);
         }
 
 
         [HttpPost]
-
-        public IActionResult Editdojo(string id)
+        public IActionResult EditDojo(string DojoName)
         {
-            return View();
+            AdminViewModel adminView = new AdminViewModel(DojoName);
+
+            return View("Dojoview",adminView);
         }
 
     }

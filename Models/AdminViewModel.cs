@@ -11,11 +11,26 @@ namespace ShitoRyuSatokia.Models
 
        public List<Dojo> DojoList { get; set; }
 
+        public Dojo SelectedDojo { get; set; }
+
 
 
         public AdminViewModel()
         {
             onDemoData();
+        }
+
+        public AdminViewModel(string SelectedDojoName)
+        {
+            SelectedDojo = new Dojo();
+            onDemoData();
+
+
+
+            var dojo = DojoList.Where(x => x.Dojo_Name == SelectedDojoName).FirstOrDefault();
+
+            SelectedDojo = dojo;
+
         }
 
 
