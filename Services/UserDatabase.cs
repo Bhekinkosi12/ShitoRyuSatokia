@@ -41,6 +41,26 @@ namespace ShitoRyuSatokia.Services
             }
 
         }
+
+        public async Task<bool> DeleteRequest(Dojo dojo)
+        {
+            try
+            {
+                var sele = (await client.Child("Requests").OnceAsync<Dojo>()).Where(x => x.Object.ID == dojo.ID).FirstOrDefault();
+
+
+                await client.Child("Requests").Child(sele.Key).DeleteAsync();
+
+
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return await Task.FromResult(true);
+
+            }
+        }
+
         public async Task<List<Dojo>> GetDojoRequest()
         {
             List<Dojo> dojolist = new List<Dojo>();
@@ -59,6 +79,51 @@ namespace ShitoRyuSatokia.Services
             catch
             {
                 return null;
+            }
+        }
+
+        public async Task UpdateDojo(Dojo dojo)
+        {
+            try
+            {
+                var selectedDojo = (await client.Child("Dojos").OnceAsync<Dojo>()).Where(x => x.Object.ID == dojo.ID).FirstOrDefault();
+
+                await client.Child("Dojos").Child(selectedDojo.Key).PutAsync(dojo);
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        public async Task<bool> AddDojoAsync(Dojo dojo)
+        {
+            try
+            {
+                await client.Child("Dojos").PostAsync(dojo);
+
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return await Task.FromResult(true);
+
+            }
+        }
+
+        public async Task DeleteDojo(Dojo dojo)
+        {
+            try
+            {
+                var item = (await client.Child("Dojos").OnceAsync<Dojo>()).Where(x => x.Object.ID == dojo.ID).FirstOrDefault();
+
+
+                await client.Child("Dojos").Child(item.Key).DeleteAsync();
+            }
+            catch
+            {
+
             }
         }
 
