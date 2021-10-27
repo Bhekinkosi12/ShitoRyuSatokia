@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ShitoRyuSatokia.Models.AdminViewModel
+
+<div class="container" style="margin-top: 20px;">
+
+    <div class="col-12">
+        <div class="row">
+            <div class="C-Cover col-12 m-auto">
+                <img src="@Model.SelectedNews.Cover_Image" />
+            </div>
+
+            <hr class="C-Line" />
+            <div class="CHead col-12">
+                <h2>@Model.SelectedNews.heading</h2>
+            </div>
+
+            <hr class="C-Line" />
+
+            <div class="CMidBody col-12">
+                <h4>@Model.SelectedNews.Description</h4>
+            </div>
+
+            <div class=" col-12">
+                <p style="text-align: center;"> 20 November 2021</p>
+            </div>
+            <hr class="C-Line" />
+
+
+
+
+                    <div class="C-Carosel col-md-12">
+                        <div class="featured-carousel owl-carousel">
+
+                            @foreach(var item in Model.SelectedNews.EventImages)
+                            {
+                            <div class="item C-image-Block">
+                                <img src="@item.URL" />
+                            </div>
+
+                            }
+                            
+
+
+                        </div>
+
+                        </div>
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>

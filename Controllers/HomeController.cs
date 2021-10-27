@@ -28,8 +28,19 @@ namespace ShitoRyuSatokia.Controllers
         public IActionResult Privacy()
         {
             return View();
+        } 
+        public IActionResult Image()
+        {
+            AdminViewModel viewModel = new AdminViewModel();
+            return View();
         }
 
+        [HttpPost]
+        public ActionResult SelectNews(string newsid)
+        {
+            AdminViewModel viewModel = new AdminViewModel(newsid, true);
+            return View("Image",viewModel);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

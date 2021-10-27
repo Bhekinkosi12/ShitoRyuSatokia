@@ -15,7 +15,7 @@
 	var carousel = function() {
 		$('.featured-carousel').owlCarousel({
 	    loop: false,
-	    autoplay: true,
+	    autoplay: false,
 	    margin:30,
 	    animateOut: 'fadeOut',
 	    animateIn: 'fadeIn',

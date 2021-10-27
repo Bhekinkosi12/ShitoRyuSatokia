@@ -10,8 +10,10 @@ namespace ShitoRyuSatokia.Models
     {
 
        public List<Dojo> DojoList { get; set; }
+        public List<News> NewsList { get; set; }
 
         public Dojo SelectedDojo { get; set; }
+        public News SelectedNews { get; set; }
 
 
 
@@ -20,18 +22,37 @@ namespace ShitoRyuSatokia.Models
             onDemoData();
         }
 
-        public AdminViewModel(string SelectedDojoName)
+        public AdminViewModel(string SelectedDojoName, bool IsNews = false)
         {
-            SelectedDojo = new Dojo();
-            onDemoData();
+
+            if (!IsNews)
+            {
+
+                SelectedDojo = new Dojo();
+                onDemoData();
 
 
 
-            var dojo = DojoList.Where(x => x.Dojo_Name == SelectedDojoName).FirstOrDefault();
+                var dojo = DojoList.Where(x => x.Dojo_Name == SelectedDojoName).FirstOrDefault();
 
-            SelectedDojo = dojo;
+                SelectedDojo = dojo;
+            }
+            else
+            {
+                SelectedNews = new News();
+                onDemoData();
+
+                var news = NewsList.Where(x => x.Id == SelectedDojoName).FirstOrDefault();
+                SelectedNews = news;
+            }
 
         }
+       
+
+
+
+
+
 
 
 
@@ -91,6 +112,95 @@ namespace ShitoRyuSatokia.Models
 
 
 
+
+            NewsList = new List<News>()
+            {
+                new News
+                {
+                     Id = "awe",
+                      Brief = "Shito kai South Africa students were grading and changing their rankings.",
+                       Description = "In November 2021 the head of shito ryu satoha  ",
+                        Cover_Image = "images/off1.png",
+                         EventImages = new List<IMG>()
+                         {
+                              new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off1.png"
+                              },
+                               new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off2.png"
+                              },
+                                new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off3.png"
+                              }
+                         },
+                         
+                          heading = "Senior Grading Section"
+                },
+
+                 new News
+                {
+                     Id = "awe1",
+                      Brief = "Shito kai South Africa students were grading and changing their rankings.",
+                       Description = "In November 2021 the head of shito ryu satoha  ",
+                        Cover_Image = "images/off3.png",
+                         EventImages = new List<IMG>()
+                         {
+                              new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off1.png"
+                              },
+                               new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off2.png"
+                              },
+                                new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off3.png"
+                              }
+                         }
+                         ,
+                          heading = "Senior Grading Section"
+                }
+
+                 ,
+
+                 new News
+                {
+                     Id = "awe2",
+                      Brief = "Shito kai South Africa students were grading and changing their rankings.",
+                       Description = "In November 2021 the head of shito ryu satoha  ",
+                        Cover_Image = "images/off2.png",
+                         EventImages = new List<IMG>()
+                         {
+                              new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off1.png"
+                              },
+                               new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off2.png"
+                              },
+                                new IMG
+                              {
+                                   Id = Guid.NewGuid().ToString(),
+                                    URL = "images/off3.png"
+                              }
+                         },
+                          heading = "Senior Grading Section"
+                }
+
+            };
 
 
         }

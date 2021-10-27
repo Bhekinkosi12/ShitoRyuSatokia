@@ -8278,3 +8278,252 @@ h1, h2, h3, h4, h5,
   .testimony-wrap .position {
     font-size: 16px;
     color: #83b582; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.align-items-start {
+    -webkit-box-align: start !important;
+    -ms-flex-align: start !important;
+    align-items: flex-start !important;
+}
+
+.align-items-end {
+    -webkit-box-align: end !important;
+    -ms-flex-align: end !important;
+    align-items: flex-end !important;
+}
+
+.align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.align-items-baseline {
+    -webkit-box-align: baseline !important;
+    -ms-flex-align: baseline !important;
+    align-items: baseline !important;
+}
+
+.align-items-stretch {
+    -webkit-box-align: stretch !important;
+    -ms-flex-align: stretch !important;
+    align-items: stretch !important;
+}
+
+.align-content-start {
+    -ms-flex-line-pack: start !important;
+    align-content: flex-start !important;
+}
+
+.align-content-end {
+    -ms-flex-line-pack: end !important;
+    align-content: flex-end !important;
+}
+
+.align-content-center {
+    -ms-flex-line-pack: center !important;
+    align-content: center !important;
+}
+
+.align-content-between {
+    -ms-flex-line-pack: justify !important;
+    align-content: space-between !important;
+}
+
+.align-content-around {
+    -ms-flex-line-pack: distribute !important;
+    align-content: space-around !important;
+}
+
+.align-content-stretch {
+    -ms-flex-line-pack: stretch !important;
+    align-content: stretch !important;
+}
+
+.align-self-auto {
+    -ms-flex-item-align: auto !important;
+    -ms-grid-row-align: auto !important;
+    align-self: auto !important;
+}
+
+.align-self-start {
+    -ms-flex-item-align: start !important;
+    align-self: flex-start !important;
+}
+
+.align-self-end {
+    -ms-flex-item-align: end !important;
+    align-self: flex-end !important;
+}
+
+.align-self-center {
+    -ms-flex-item-align: center !important;
+    -ms-grid-row-align: center !important;
+    align-self: center !important;
+}
+
+.align-self-baseline {
+    -ms-flex-item-align: baseline !important;
+    align-self: baseline !important;
+}
+
+.align-self-stretch {
+    -ms-flex-item-align: stretch !important;
+    -ms-grid-row-align: stretch !important;
+    align-self: stretch !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.block-20 {
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 275px;
+    position: relative;
+    display: block;
+}
+
+.blog-entry {
+    width: 100%;
+    background: #fff;
+}
+
+    .blog-entry .text {
+        position: relative;
+        border-top: 0;
+        border-radius: 2px;
+    }
+
+        .blog-entry .text .heading {
+            font-size: 17px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+            .blog-entry .text .heading a {
+                color: #000;
+            }
+
+                .blog-entry .text .heading a:hover, .blog-entry .text .heading a:focus, .blog-entry .text .heading a:active {
+                    color: #ff487e;
+                }
+
+        .blog-entry .text .meta-chat {
+            color: #b3b3b3;
+        }
+
+        .blog-entry .text .read {
+            color: #000;
+            font-size: 14px;
+        }
+
+    .blog-entry .meta-date {
+        display: inline-block;
+        background: #343a40;
+    }
+
+        .blog-entry .meta-date span {
+            display: block;
+            color: #fff;
+        }
+
+        .blog-entry .meta-date .day {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .blog-entry .meta-date .mos, .blog-entry .meta-date .yr {
+            font-size: 13px;
+        }
+
+    .blog-entry .meta > div {
+        display: block;
+        margin-right: 5px;
+        margin-bottom: 0px;
+        font-size: 15px;
+    }
+
+        .blog-entry .meta > div a {
+            color: #b3b3b3;
+            font-size: 13px;
+        }
+
+            .blog-entry .meta > div a:hover {
+                color: #cccccc;
+            }
+
+    .blog-entry .meta2 a {
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+
+
+
+    .C-Line{
+        height: 2px;
+        background-color: white;
+        width: 100vh;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+
+    .CHead h2{
+        color: #17a2b8;
+        text-align: center;
+    }
+
+    .CMidBody h4{
+        text-align: center;
+        color: #6c757d;
+
+    }
+
+    .C-image-Block{
+        display: block;
+        height: 500px;
+    }
+
+    .C-Carosel{
+        background: rgba(0,0,0,0.1);
+    }
+
+    .C-Cover{
+        
+        height: 90vh;
+        display: inline-flex;
+        justify-content: space-around;
+        justify-items: center;
+    }
+    .C-Cover img{
+        height: 100%;
+        width: auto;
+    }
+    
