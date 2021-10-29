@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShitoRyuSatokia.Models.MicroModel;
+using ShitoRyuSatokia.Services;
 
 namespace ShitoRyuSatokia.Models
 {
@@ -52,7 +53,25 @@ namespace ShitoRyuSatokia.Models
 
 
 
+       async void getNewsData()
+        {
+                onDemoData();
+            UserDatabase userDatabase = new UserDatabase();
+            var list = await userDatabase.GetAllNews();
+            
 
+
+            if(list.Count != 0)
+            {
+                NewsList = list;
+            }
+            else
+            {
+            }
+
+
+
+        }
 
 
 
@@ -120,23 +139,23 @@ namespace ShitoRyuSatokia.Models
                      Id = "awe",
                       Brief = "Shito kai South Africa students were grading and changing their rankings.",
                        Description = "In November 2021 the head of shito ryu satoha  ",
-                        Cover_Image = "images/off1.png",
+                        Cover_Image = "../images/off1.png",
                          EventImages = new List<IMG>()
                          {
                               new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off1.png"
+                                    URL = "../images/off1.png"
                               },
                                new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off2.png"
+                                    URL = "../images/off2.png"
                               },
                                 new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off3.png"
+                                    URL = "../images/off3.png"
                               }
                          },
                          
@@ -148,23 +167,23 @@ namespace ShitoRyuSatokia.Models
                      Id = "awe1",
                       Brief = "Shito kai South Africa students were grading and changing their rankings.",
                        Description = "In November 2021 the head of shito ryu satoha  ",
-                        Cover_Image = "images/off3.png",
+                        Cover_Image = "../images/off3.png",
                          EventImages = new List<IMG>()
                          {
                               new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off1.png"
+                                    URL = "../images/off1.png"
                               },
                                new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off2.png"
+                                    URL = "../images/off2.png"
                               },
                                 new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off3.png"
+                                    URL = "../images/off3.png"
                               }
                          }
                          ,
@@ -178,23 +197,23 @@ namespace ShitoRyuSatokia.Models
                      Id = "awe2",
                       Brief = "Shito kai South Africa students were grading and changing their rankings.",
                        Description = "In November 2021 the head of shito ryu satoha  ",
-                        Cover_Image = "images/off2.png",
+                        Cover_Image = "../images/off2.png",
                          EventImages = new List<IMG>()
                          {
                               new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off1.png"
+                                    URL = "../images/off1.png"
                               },
                                new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off2.png"
+                                    URL = "../images/off2.png"
                               },
                                 new IMG
                               {
                                    Id = Guid.NewGuid().ToString(),
-                                    URL = "images/off3.png"
+                                    URL = "../images/off3.png"
                               }
                          },
                           heading = "Senior Grading Section"

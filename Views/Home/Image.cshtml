@@ -21,7 +21,7 @@
             <hr class="C-Line" />
 
             <div class="CMidBody col-12">
-                <h4>@Model.SelectedNews.Description</h4>
+                <h4>@Model.SelectedNews.Brief</h4>
             </div>
 
             <div class=" col-12">
@@ -29,30 +29,36 @@
             </div>
             <hr class="C-Line" />
 
+            <div class="CMidBody col-12">
+                <h6>@Model.SelectedNews.Description</h6>
+            </div>
+
+
+            <hr class="C-Line" />
 
 
 
-                    <div class="C-Carosel col-md-12">
-                        <div class="featured-carousel owl-carousel">
+            <div class="C-Carosel col-md-12">
+                <div class="featured-carousel owl-carousel">
 
-                            @foreach(var item in Model.SelectedNews.EventImages)
-                            {
-                            <div class="item C-image-Block">
-                                <img src="@item.URL" />
-                            </div>
-
-                            }
-                            
-
-
+                    @foreach (var item in Model.SelectedNews.EventImages)
+                    {
+                        <div class="item C-image-Block">
+                            <img src="@item.URL" />
                         </div>
 
-                        </div>
-
+                    }
 
 
 
                 </div>
+
+            </div>
+
+
+
+
+        </div>
 
 
 

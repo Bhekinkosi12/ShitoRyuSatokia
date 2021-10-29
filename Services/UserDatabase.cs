@@ -129,6 +129,61 @@ namespace ShitoRyuSatokia.Services
 
 
 
+        public async Task AddNews(News news)
+        {
+
+            try
+            {
+                await client.Child("News").PostAsync(news);
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public async Task<List<News>> GetAllNews()
+        {
+            List<News> newslist = new List<News>();
+            try
+            {
+                var items = await client.Child("News").OnceAsync<News>();
+                foreach(var i in items)
+                {
+                    newslist.Add(i.Object);
+                }
+                return await Task.FromResult(newslist);
+                
+            }
+            catch
+            {
+                return newslist;
+            }
+        }
+
+
+        public async Task<bool> DeleteNews(News news)
+        {
+
+            try
+            {
+                var item = (await client.Child("News").OnceAsync<News>()).Where(x => x.Object.Id == news.Id).FirstOrDefault();
+
+                await client.Child("News").Child(item.Key).DeleteAsync();
+
+
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+
 
 
     }

@@ -41,3 +41,26 @@
 	carousel();
 
 })(jQuery);
+
+
+
+
+var IsPlaying = false;
+
+var BigFiveAudio = document.getElementById("b");
+
+BigFiveAudio.addEventListener("click", () => {
+
+	var music = new Audio("../audio/firstfeel.mp3");
+	if (IsPlaying) {
+
+		music.play();
+		IsPlaying = true;
+	}
+	else {
+		music.pause();
+		IsPlaying = false;
+    }
+
+
+});
