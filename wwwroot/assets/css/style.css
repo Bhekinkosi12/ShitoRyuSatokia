@@ -8569,6 +8569,20 @@ h1, h2, h3, h4, h5,
     .right-image {
         padding-top: 40px;
     }
+
+
+    .intro li{
+        align-self: start;
+        text-align: start;
+        margin-top: 10px;
+    }
+    .intro ul {
+        margin-top: 60px;
+    }
+    .intro h5{
+        align-self: start;
+        text-align: start;
+    }
 }
 
 
@@ -8601,4 +8615,29 @@ h1, h2, h3, h4, h5,
     position: sticky;
     z-index: 1;
     
+}
+
+.intro a{
+    color: #191919;
+    font-weight: 500;
+}
+
+
+.intro h5{
+    font-size: 17px;
+    margin-top: 30px;
+    font-weight: 500;
+    
+}
+.intro h5 span{
+    font-weight: 700;
+}
+
+
+
+.head-c h2{
+    text-align: center;
+}
+.head-c{
+    margin-top: 60px;
 }

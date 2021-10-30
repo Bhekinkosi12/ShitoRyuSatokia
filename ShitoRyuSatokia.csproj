@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
     <PackageReference Include="Firebase.js" Version="2.1.2" />
-    <PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.4.0" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
   </ItemGroup>
