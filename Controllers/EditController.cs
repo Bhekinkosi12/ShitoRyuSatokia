@@ -20,6 +20,10 @@ namespace ShitoRyuSatokia.Controllers
             AdminViewModel adminView = new AdminViewModel(DojoName);
             return View(adminView);
         }
+        public IActionResult Newsview(string Newsid)
+        {
+            return View();
+        }
 
 
         [HttpPost]
@@ -28,6 +32,14 @@ namespace ShitoRyuSatokia.Controllers
             AdminViewModel adminView = new AdminViewModel(DojoName);
 
             return View("Dojoview",adminView);
+        }
+
+        [HttpPost]
+        public IActionResult EditNews(string Newsid)
+        {
+            AdminViewModel adminView = new AdminViewModel(Newsid, true);
+
+            return View("Newsview", adminView);
         }
 
     }
