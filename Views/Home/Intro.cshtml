@@ -3,14 +3,14 @@
 *@
 @{
 }
-
+@model ShitoRyuSatokia.Models.AdminViewModel
 
 
 <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
         <div class="row">
             <div class="C-Head col-12 center">
-                <h1>SHITO RYU SATOKAI <br /> <span>SOUTH AFRICA</span> </h1>
+                <h1> Shitoryu Satokai <span>SOUTH AFRICA</span> Satoha Shito ryu International Federation </h1>
 
             </div>
             <div class="col-lg-12">
@@ -62,67 +62,94 @@
 
                         </div>
                     </div>
+
+
+
+                    <div class="col-md-12">
+                        <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            @foreach (var i in Model.DojoList)
+                            {
+
+                                <div class="item" style="border: 0.5px solid gray;">
+                                    <div class="testimony-wrap py-4">
+                                        <div class="text">
+                                            <p class="mb-4">@i.Dojo_Instructor_Description</p>
+                                            <div class="d-flex align-items-center">
+                                                <div class="user-img" style="background-image: url(@i.Dojo_Instructor_Image)"></div>
+                                                <div class="pl-3">
+                                                    <p class="name">@i.Dojo_Instructor</p>
+                                                    <span class="position">@i.Dojo_Instructor_Position</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
             <div class="col-12">
                 <!--
-            <div id="features" class="features section">
-                <div class="container">
+                <div id="features" class="features section">
+                    <div class="container">
 
-                    <div class="row">
+                        <div class="row">
 
-                        <div class="col-3">
+                            <div class="col-3">
 
-                            <h3>
-                                ESTABLISHMENT
-                            </h3>
-                            <p>
-                                Satoha Shitoryu Satokai South Africa was founded and established in the year 2013 by Sydney Hoaeane 6th Dan, which now enjoys popularity and growth in South Africa and Africa.
-                            </p>
+                                <h3>
+                                    ESTABLISHMENT
+                                </h3>
+                                <p>
+                                    Satoha Shitoryu Satokai South Africa was founded and established in the year 2013 by Sydney Hoaeane 6th Dan, which now enjoys popularity and growth in South Africa and Africa.
+                                </p>
+
+                            </div>
+                            <div class="col-3">
+                                <h3>
+                                    AFFILIATION
+                                </h3>
+                                <p>
+                                    Satoha Shitoryu Satokai South Africa its an official member of Satoha Shitoryu Satokai international federation. We also enjoy membership of sporting karate WKF, and all Shitoryu international federations.
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <h3>
+                                    ORIGIN
+                                </h3>
+                                <p>
+                                    We are direct leanage from master Mabuni's Shitoryu teachings in japan. Whose direct student was master Sagagami, who was left in charge of master Mabuni's Dojo, who later transferred the knowledge and Shitoryu ways to Akira Sato 9th Dan the founder of Satoha Shitoryu Satokai international federation
+                                </p>
+
+                            </div>
+                            <div class="col-3">
+                                <h3>
+                                    BENEFITS
+                                </h3>
+
+                                <p>
+                                    We offer traditional karate for self defence, sport karate, fitness, fun and leisure, karate classes and indivitual lessons. We encourage women and children to join ua to be able to with stand abuse and bullying. Karate is for all ages, all gender and for the disabled.
+                                </p>
+
+
+                            </div>
+
+
+
+
 
                         </div>
-                        <div class="col-3">
-                            <h3>
-                                AFFILIATION
-                            </h3>
-                            <p>
-                                Satoha Shitoryu Satokai South Africa its an official member of Satoha Shitoryu Satokai international federation. We also enjoy membership of sporting karate WKF, and all Shitoryu international federations.
-                            </p>
-                        </div>
-                        <div class="col-3">
-                            <h3>
-                                ORIGIN
-                            </h3>
-                            <p>
-                                We are direct leanage from master Mabuni's Shitoryu teachings in japan. Whose direct student was master Sagagami, who was left in charge of master Mabuni's Dojo, who later transferred the knowledge and Shitoryu ways to Akira Sato 9th Dan the founder of Satoha Shitoryu Satokai international federation
-                            </p>
-
-                        </div>
-                        <div class="col-3">
-                            <h3>
-                                BENEFITS
-                            </h3>
-
-                            <p>
-                                We offer traditional karate for self defence, sport karate, fitness, fun and leisure, karate classes and indivitual lessons. We encourage women and children to join ua to be able to with stand abuse and bullying. Karate is for all ages, all gender and for the disabled.
-                            </p>
-
-
-                        </div>
-
-
-
+                    </div>
 
 
                     </div>
-                </div>
 
-
-                </div>
-
-            -->
+                -->
                 <div id="features" class="features section">
                     <div class="container">
                         <div class="row">
@@ -135,7 +162,7 @@
                                                 <h4>ESTABLISHMENT</h4>
                                                 <div class="line-dec"></div>
                                                 <p>
-                                                    Satoha Shitoryu Satokai South Africa was founded and established in the year 2013 by Sydney Hoaeane 6th Dan, which now enjoys popularity and growth in South Africa and Africa.
+                                                    Shitoryu Satokai South Africa Satoha Shito ryu International Federation was founded and established in the year 2013 by Sydney Hoaeane 6th Dan, which now enjoys popularity and growth in South Africa and Africa.
                                                 </p>
                                             </div>
                                         </div>
@@ -145,7 +172,7 @@
                                                 <h4>AFFILIATION</h4>
                                                 <div class="line-dec"></div>
                                                 <p>
-                                                    Satoha Shitoryu Satokai South Africa its an official member of Satoha Shitoryu Satokai international federation. We also enjoy membership of sporting karate WKF, and all Shitoryu international federations.
+                                                    Shitoryu Satokai South Africa Satoha Shito ryu International Federation its an official member of Satoha Shitoryu Satokai international federation. We also enjoy membership of sporting karate WKF, and all Shitoryu international federations.
                                                 </p>
                                             </div>
                                         </div>

@@ -29,7 +29,7 @@ namespace ShitoRyuSatokia.Controllers
         [HttpPost]
         public IActionResult EditDojo(string DojoName)
         {
-            AdminViewModel adminView = new AdminViewModel(DojoName);
+            AdminViewModel adminView = new AdminViewModel(DojoName);   
 
             return View("Dojoview",adminView);
         }

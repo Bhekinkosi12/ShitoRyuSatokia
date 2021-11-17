@@ -18,9 +18,20 @@ namespace ShitoRyuSatokia.Models
 
 
 
-        public AdminViewModel()
+        public AdminViewModel(bool IsFirstRoute = true)
         {
             onDemoData();
+            if (!IsFirstRoute)
+            {
+                List<Dojo> dojolist = new List<Dojo>();
+                foreach(var i in DojoList)
+                {
+                    i.Dojo_Instructor_Image = $"../{i.Dojo_Instructor_Image}";
+                    dojolist.Add(i);
+                }
+                DojoList = dojolist;
+            }
+            
         }
 
         public AdminViewModel(string SelectedDojoName, bool IsNews = false)
@@ -84,7 +95,7 @@ namespace ShitoRyuSatokia.Models
                      Dojo_Name = "Sasol Club Recreation center",
                       location = "Mpumalanga Secunda Embalenhle ext5",
                        Dojo_Instructor = "Joseph Sensei",
-                        Dojo_Instructor_Description = "Joseph Sensei is the head of Sasol Recreational center. The head couch of Mpumalanga in Karate South Africa.",
+                        Dojo_Instructor_Description = "National Coach",
                          Dojo_Instructor_Image = "images/off1.png",
                           Dojo_Instructor_Position = "4th Dan",
                            Dojo_Description = "Sasol Recreational center is a club were karate is practiced with a bunch of other.",
@@ -97,11 +108,11 @@ namespace ShitoRyuSatokia.Models
                 },
                    new Dojo
                 {
-                     Dojo_Name = "Sasol Club Recreation center",
+                     Dojo_Name = "Dojo Name",
                       location = "Mpumalanga Secunda Embalenhle ext5",
-                       Dojo_Instructor = "Joseph Sensei",
-                        Dojo_Instructor_Description = "Joseph Sensei is the head of Sasol Recreational center. The head couch of Mpumalanga in Karate South Africa.",
-                         Dojo_Instructor_Image = "images/off1.png",
+                       Dojo_Instructor = "Obtri Murwe",
+                        Dojo_Instructor_Description = "National co-ordinator",
+                         Dojo_Instructor_Image = "images/off4.png",
                           Dojo_Instructor_Position = "4th Dan",
                            Dojo_Description = "Sasol Recreational center is a club were karate is practiced with a bunch of other.",
                             ID = Guid.NewGuid().ToString(),
@@ -115,10 +126,26 @@ namespace ShitoRyuSatokia.Models
                 {
                      Dojo_Name = "Sasol Club Recreation center",
                       location = "Mpumalanga Secunda Embalenhle ext5",
-                       Dojo_Instructor = "Joseph Sensei",
-                        Dojo_Instructor_Description = "Joseph Sensei is the head of Sasol Recreational center. The head couch of Mpumalanga in Karate South Africa.",
-                         Dojo_Instructor_Image = "images/off1.png",
-                          Dojo_Instructor_Position = "4th Dan",
+                       Dojo_Instructor = "Sydney Hoaeane",
+                        Dojo_Instructor_Description = "Chief Instructor",
+                         Dojo_Instructor_Image = "images/off3.png",
+                          Dojo_Instructor_Position = "6th Dan",
+                           Dojo_Description = "Sasol Recreational center is a club were karate is practiced with a bunch of other.",
+                            ID = Guid.NewGuid().ToString(),
+                             Regulation = "",
+                              Dojo_Schedule = new Dictionary<string, string>()
+                              {
+
+                              }
+                },
+                       new Dojo
+                {
+                     Dojo_Name = "Sasol Club Recreation center",
+                      location = "Mpumalanga Secunda Embalenhle ext5",
+                       Dojo_Instructor = "Sensei Mduduzi",
+                        Dojo_Instructor_Description = "Head Sensei",
+                         Dojo_Instructor_Image = "images/off2.png",
+                          Dojo_Instructor_Position = "6th Dan",
                            Dojo_Description = "Sasol Recreational center is a club were karate is practiced with a bunch of other.",
                             ID = Guid.NewGuid().ToString(),
                              Regulation = "",

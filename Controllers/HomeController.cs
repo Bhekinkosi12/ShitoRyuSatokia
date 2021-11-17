@@ -32,7 +32,8 @@ namespace ShitoRyuSatokia.Controllers
         
         public IActionResult Intro()
         {
-            return View();
+            AdminViewModel viewModel = new AdminViewModel(false);
+            return View(viewModel);
         } 
         public IActionResult Image()
         {
