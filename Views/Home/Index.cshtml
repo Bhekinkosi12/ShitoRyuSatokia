@@ -552,7 +552,7 @@
 
 
 
-    <section class="ftco-section">
+    <section class="ftco-section" style="background: #fff;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -564,7 +564,7 @@
                         @foreach (var i in Model.NewsList)
                         {
                             Html.BeginForm("SelectNews", "Home");
-                            <div class="item">
+                            <div class="item" style="border: 0.3px solid #191919;">
                                 <div class="blog-entry">
                                     <div class="block-20 d-flex align-items-start" style="background-image: url(@i.Cover_Image);">
                                         <div class="meta-date text-center p-2">
@@ -793,6 +793,13 @@
                                                 <img src="assets/images/contact-icon-03.png" alt="location">
                                             </div>
                                             <a href="#">Soweto</a>
+                                        </li>
+
+                                        <li>
+                                            <div class="icon">
+                                                <img src="assets/images/facebook.png" alt="facebook">
+                                            </div>
+                                            <a href="#">Visit</a>
                                         </li>
                                     </ul>
                                 </div>
