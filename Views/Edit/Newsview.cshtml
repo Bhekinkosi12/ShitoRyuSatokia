@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model ShitoRyuSatokia.Models.AdminViewModel
+@model ShitoRyuSatokia.Models.MicroModel.News
 
 <div id="contact" class="contact-us section">
     <div class="container">
@@ -17,20 +17,48 @@
 
                             </div>
                         </div>
+
+                        <div class="col-lg-6 offset-lg-3" style="margin-bottom: 60px;">
+                            <div class="container_">
+                                <div class="wrapper_">
+                                    <div class="image">
+                                        <img src="@Model.Cover_Image" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                           
+                                        </div>
+                                    </div>
+                                    <div id="cancel-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        File name
+                                    </div>
+                                </div>
+                                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a Image</button>
+                                <input  id="default-btn" type="file" hidden>
+
+                            </div>
+                        </div>
+
                         <div class="col-lg-12">
                             <div class="row">
 
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="name" name="name" value="@Model.SelectedNews.heading" id="name" placeholder="Header" autocomplete="on" required>
+                                        <input type="text" value="@Model.heading" id="name" placeholder="Header" autocomplete="on" required>
                                     </fieldset>
                                 </div>
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
 
                                     <fieldset>
-                                        <input type="text" name="Dname" value="@Model.SelectedNews.Brief" placeholder="Brief" autocomplete="on" required>
+                                        <textarea type="text" class="form-control" id="message" placeholder="News description">@Model.Brief</textarea>
                                     </fieldset>
                                 </div>
 
@@ -38,7 +66,7 @@
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="name" name="name" id="name" value="@Model.SelectedNews.Description" placeholder="Description" autocomplete="on" required>
+                                        <textarea type="text" class="form-control"  id="message" placeholder="News description">@Model.Description</textarea>
                                     </fieldset>
                                 </div>
 
@@ -48,27 +76,6 @@
 
 
 
-
-                                <div class="C-Carosel col-md-12">
-                                    <div class="btn btn-outline-success">ADD</div>
-                                    <div class="featured-carousel owl-carousel">
-
-                                        @foreach (var item in Model.SelectedNews.EventImages)
-                                        {
-                                            <div class="item C-image-Block">
-                                                <img src="@item.URL" />
-                                                <div class="btn btn-danger">Delete</div>
-                                            </div>
-
-                                        }
-
-
-
-                                    </div>
-
-
-
-                                </div>
 
 
                                 <div class="col-lg-12">
@@ -77,10 +84,7 @@
                                     </fieldset>
                                 </div>
 
-                                <div class="col-lg-6" style="background: #aaa;">
 
-                                <input class="custom-file-input" type="file" />
-                                </div>
 
 
                             </div>
@@ -92,3 +96,6 @@
         </div>
     </div>
 </div>
+
+
+

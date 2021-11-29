@@ -8647,3 +8647,12 @@ h1, h2, h3, h4, h5,
     background-color: rgba(0,0,0,0.5);
     height: 1px;
 }
+
+.Popup{
+
+    position: fixed;
+    z-index: 20;
+    background: #fff;
+    top: 20px;
+    height: 100vh;
+}

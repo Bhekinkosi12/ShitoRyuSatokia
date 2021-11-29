@@ -3,47 +3,177 @@
 *@
 @{
 }
-@model ShitoRyuSatokia.Models.AdminViewModel
+@model ShitoRyuSatokia.Models.MicroModel.Dojo
+
+
+
+<style>
+
+    .hidden{
+        display: none;
+        visibility: hidden;
+    }
+
+    .container_ {
+        height: 350px;
+       
+        position: relative;
+    }
+
+        .container_ .wrapper_ {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px dashed #c2cdda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+    .wrapper_.active {
+        border: none;
+    }
+
+    .wrapper_ .image {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrapper_ img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .wrapper_ .icon {
+        font-size: 100px;
+        color: #9658fe;
+    }
+
+    .wrapper_ .text {
+        font-size: 20px;
+        font-weight: 500;
+        color: #5B5B7B;
+    }
+
+    .wrapper_ #cancel-btn i {
+        position: absolute;
+        font-size: 20px;
+        right: 15px;
+        top: 15px;
+        color: #9658fe;
+        cursor: pointer;
+        display: none;
+    }
+
+    .wrapper_.active:hover #cancel-btn i {
+        display: block;
+    }
+
+    .wrapper_ #cancel-btn i:hover {
+        color: #e74c3c;
+    }
+
+    .wrapper_ .file-name {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 8px 0;
+        font-size: 18px;
+        color: #fff;
+        display: none;
+        background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    }
+
+    .wrapper_.active:hover .file-name {
+        display: block;
+    }
+
+    .container_ #custom-btn {
+        margin-top: 30px;
+        display: block;
+        width: 100%;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 25px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+    }
+</style>
+
+
+
 
 <div id="contact" class="contact-us section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-                <form id="contact" action="" method="post">
+                
+                   <form id="contact" asp-controller="Edit" asp-action="UpdateDojo" enctype="multipart/form-data" method="post" role="form" >
+
                     <div class="row">
                         <div class="col-lg-6 offset-lg-3">
                             <div class="section-heading">
                                 <h6>Edit Form</h6>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 offset-lg-3" style="margin-bottom: 60px;">
+                            <div class="container_">
+                                <div class="wrapper_">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            No file chosen, yet!
+                                        </div>
+                                    </div>
+                                    <div id="cancel-btn">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        File name
+                                    </div>
+                                </div>
+                                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a Image</button>
+                                <input asp-for="InstructorImage" id="default-btn" type="file" hidden>
                                 
                             </div>
                         </div>
+
                         <div class="col-lg-12">
                             <div class="row">
 
 
+                   
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="name" name="name" value="@Model.SelectedDojo.Dojo_Name" id="name" placeholder="Dojo Name" autocomplete="on" required>
+                                        <input type="text"  asp-for="Dojo_Name" value="@Model.Dojo_Name" id="name" placeholder="Dojo Name" autocomplete="on" >
                                     </fieldset>
                                 </div>
 
                                 <div class="col-lg-6">
 
                                     <fieldset>
-                                        <input type="text" name="Dname" placeholder="Instructor Surname" autocomplete="on" required>
-                                    </fieldset>
-                                </div>
-
-
-
-                                <div class="col-lg-6">
-                                    <fieldset>
-                                        <input type="name" name="name" id="name" value="@Model.SelectedDojo.Dojo_Instructor" placeholder="Head Instructor Name" autocomplete="on" required>
-                                    </fieldset>
-                                </div>
-                                <div class="col-lg-6">
-                                    <fieldset>
-                                        <input type="name" name="name" value="@Model.SelectedDojo.Dojo_Instructor_Email" id="name" placeholder="Head Instructor Email" autocomplete="on" required>
+                                        <input type="text"  asp-for="Dojo_Instructor_Surname" value="sd" placeholder="Instructor Surname" autocomplete="on" >
                                     </fieldset>
                                 </div>
 
@@ -51,44 +181,63 @@
 
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="name" name="name" value="@Model.SelectedDojo.Dojo_Instructor_Position" id="name" placeholder="Head Instructor Position" autocomplete="on" required>
+                                        <input type="text"  asp-for="Dojo_Instructor" id="name" value="@Model.Dojo_Instructor" placeholder="Head Instructor Name" autocomplete="on" >
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input type="text"  asp-for="Dojo_Instructor_Email" value="@Model.Dojo_Instructor_Email" id="name" placeholder="Head Instructor Email" autocomplete="on" >
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input type="text" asp-for="Dojo_Instructor_Position"  value="@Model.Dojo_Instructor_Position" id="name" placeholder="Head Instructor Position" autocomplete="on" >
                                     </fieldset>
                                 </div>
 
 
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="name" name="name" value="@Model.SelectedDojo.Dojo_Instructor_Number" id="name" placeholder="Head Instructor Number" autocomplete="on" required>
+                                        <input type="text" asp-for="Dojo_Instructor_Number"  value="@Model.Dojo_Instructor_Number" id="name" placeholder="Head Instructor Number" autocomplete="on">
                                     </fieldset>
                                 </div>
 
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="surname" name="surname" value="@Model.SelectedDojo.location" id="surname" placeholder="Dojo Location" autocomplete="on" required>
+                                        <input type="text" asp-for="location"  value="@Model.location" id="surname" placeholder="Dojo Location" autocomplete="on" >
                                     </fieldset>
                                 </div>
 
 
-                                
+
                                 <div class="col-lg-12">
                                     <div class="section-heading" style="margin: 0;">
                                         <p>Instructors Short Description</p>
 
                                     </div>
                                     <fieldset>
-                                        <textarea name="message" type="text" class="form-control" id="message" placeholder="Instructors Short description" required="">@Model.SelectedDojo.Dojo_Instructor_Description</textarea>
+                                        <textarea type="text" class="form-control" asp-for="Dojo_Instructor_Description" id="Dbrief" placeholder="Instructors Short description" >@Model.Dojo_Instructor_Description</textarea>
                                     </fieldset>
                                 </div>
+
+
+
+
+
                                 <div class="col-lg-12">
                                     <div class="section-heading" style="margin: 0;">
                                         <p>Dojo Description</p>
 
                                     </div>
                                     <fieldset>
-                                        <textarea name="message" type="text" class="form-control" id="message" placeholder="Dojo description" required="">@Model.SelectedDojo.Dojo_Description</textarea>
+                                        <textarea  type="text" class="form-control" asp-for="Dojo_Description" id="message" placeholder="Dojo description" >@Model.Dojo_Description</textarea>
                                     </fieldset>
                                 </div>
+           
 
                                 <div class="col-lg-12">
 
@@ -98,9 +247,10 @@
                                     </div>
 
                                     <fieldset>
-                                        <textarea name="message" type="text" class="form-control" id="message" placeholder="Dojo rules and regulation" required="">@Model.SelectedDojo.Regulation</textarea>
+                                        <textarea  type="text" class="form-control" id="message" asp-for="Regulation" placeholder="Dojo rules and regulation" >@Model.Regulation</textarea>
                                     </fieldset>
                                 </div>
+                       
                                 <div class="col-lg-12">
 
                                     <div class="section-heading" style="margin: 0;">
@@ -109,20 +259,25 @@
                                     </div>
 
                                     <fieldset>
-                                        <textarea name="Dtime" type="text" class="form-control" id="message" placeholder="Dojo Schedule" required="">@Model.SelectedDojo.Dojo_Time</textarea>
+                                        <textarea  type="text" class="form-control" id="message" asp-for="Dojo_Time" placeholder="Dojo Schedule" >can</textarea>
                                     </fieldset>
                                 </div>
+                             
                                 <div class="col-lg-12">
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-button ">Save Form</button>
                                     </fieldset>
                                 </div>
+
                             </div>
                         </div>
-                    
+
                     </div>
-                </form>
+                    
+                
+                    </form>
             </div>
         </div>
     </div>
 </div>
+

@@ -13,8 +13,8 @@ namespace ShitoRyuSatokia.Models
        public List<Dojo> DojoList { get; set; }
         public List<News> NewsList { get; set; }
 
-        public Dojo SelectedDojo { get; set; }
-        public News SelectedNews { get; set; }
+        public  Dojo SelectedDojo { get; set; }
+        public  News SelectedNews { get; set; }
 
 
 
@@ -58,6 +58,17 @@ namespace ShitoRyuSatokia.Models
                 SelectedNews = news;
             }
 
+        }
+
+        public Dojo ReturnDojo()
+        {
+
+            return SelectedDojo;
+        }
+
+        public News ReturnNews()
+        {
+            return SelectedNews;
         }
        
 

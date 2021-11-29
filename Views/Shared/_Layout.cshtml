@@ -52,7 +52,7 @@
     </div>
     <!-- ***** Preloader End ***** -->
     <!-- ***** Header Area Start ***** -->
-   
+
     <div class="container" style="width: 100vw; margin: 0; padding: 0;">
         <main role="main" class="pb-3" style="width: 100vw; margin: 0; padding: 0;">
             @RenderBody()
@@ -65,13 +65,52 @@
         </div>
     </footer>
 
+    @{ 
+        string at = "@";
+    }
+
+
+    <script>
+         const wrapper = document.querySelector(".wrapper_");
+         const fileName = document.querySelector(".file-name");
+         const defaultBtn = document.querySelector("#default-btn");
+         const customBtn = document.querySelector("#custom-btn");
+         const cancelBtn = document.querySelector("#cancel-btn i");
+         const img = document.querySelector("img");
+         let regExp = /[0-9a-zA-Z\^\&\'\@at\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+         function defaultBtnActive(){
+           defaultBtn.click();
+         }
+         defaultBtn.addEventListener("change", function(){
+           const file = this.files[0];
+           if(file){
+             const reader = new FileReader();
+             reader.onload = function(){
+               const result = reader.result;
+               img.src = result;
+               wrapper.classList.add("active");
+             }
+             cancelBtn.addEventListener("click", function(){
+               img.src = "";
+               wrapper.classList.remove("active");
+             })
+             reader.readAsDataURL(file);
+           }
+           if(this.value){
+             let valueStore = this.value.match(regExp);
+             fileName.textContent = valueStore;
+           }
+         });
+    </script>
+
+
 
 
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
 
-    <script src="~/assets/js/Firebase.js" ></script>
+    <script src="~/assets/js/Firebase.js"></script>
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/popper.js"></script>
