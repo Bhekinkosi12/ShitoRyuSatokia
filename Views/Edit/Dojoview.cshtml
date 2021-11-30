@@ -132,6 +132,8 @@
                             </div>
                         </div>
                         <input asp-for="Dojo_Instructor_Image" value="@Model.Dojo_Instructor_Image" hidden />
+                        <input asp-for="IsNew" value="@Model.IsNew" hidden />
+                        <input asp-for="ID" value="@Model.ID" hidden />
 
                         <div class="col-lg-6 offset-lg-3" style="margin-bottom: 60px;">
                             <div class="container_">
@@ -174,7 +176,7 @@
                                 <div class="col-lg-6">
 
                                     <fieldset>
-                                        <input type="text"  asp-for="Dojo_Instructor_Surname" value="sd" placeholder="Instructor Surname" autocomplete="on" >
+                                        <input type="text"  asp-for="Dojo_Instructor_Surname" value="@Model.Dojo_Instructor_Surname" placeholder="Instructor Surname" autocomplete="on" >
                                     </fieldset>
                                 </div>
 

@@ -36,9 +36,14 @@ namespace ShitoRyuSatokia.Controllers
         public IActionResult EditDojo(string DojoName)
         {
             
-            AdminViewModel adminView = new AdminViewModel(DojoName);   
+            AdminViewModel adminView = new AdminViewModel(DojoName);
 
-            return View("Dojoview",adminView.ReturnDojo());
+            var item = adminView.ReturnDojo();
+
+            item.IsNew = "false";
+
+
+            return View("Dojoview",item);
         }
 
         [HttpPost]
@@ -47,8 +52,38 @@ namespace ShitoRyuSatokia.Controllers
             Newss = Newsid;
             AdminViewModel adminView = new AdminViewModel(Newsid, true);
 
-            return View("Newsview", adminView.ReturnNews());
+            var item = adminView.ReturnNews();
+
+            item.IsNew = "false";
+
+            return View("Newsview", item);
         }
+
+
+        [HttpPost]
+        public IActionResult AddNews()
+        {
+            News news = new News();
+            news.IsNew = "true";
+            news.Id = Guid.NewGuid().ToString();
+            return View("Newsview", news);
+
+        }
+
+        [HttpPost]
+        public IActionResult AddDojo()
+        {
+
+            Dojo dojo = new Dojo();
+
+            dojo.IsNew = "true";
+            dojo.ID = Guid.NewGuid().ToString();
+
+            return View("Dojoview", dojo);
+        }
+
+
+
 
 
 
@@ -57,7 +92,16 @@ namespace ShitoRyuSatokia.Controllers
         {
             PostViewModel postViewModel = new PostViewModel();
 
+            if(dojo.IsNew == "true")
+            {
+                postViewModel.AddDojo(dojo);
+            }
+            else
+            {
+
             postViewModel.UpdateDojo(dojo);
+            }
+
            
 
             return View("Index");
@@ -68,8 +112,16 @@ namespace ShitoRyuSatokia.Controllers
         public IActionResult UpdateNews(News news)
         {
             PostViewModel postViewModel = new PostViewModel();
-
+            if(news.IsNew == "true")
+            {
+                postViewModel.AddNews(news);
+            }
+            else
+            {
             postViewModel.UpDateNews(news);
+
+            }
+
 
             return View("Index");
 

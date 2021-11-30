@@ -30,9 +30,6 @@ namespace ShitoRyuSatokia.Services
 
                 await client.Child("Requests").PostAsync(dojo);
 
-
-
-
                 return await Task.FromResult(true);
             }
             catch

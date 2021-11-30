@@ -16,7 +16,7 @@ namespace ShitoRyuSatokia.Models.MicroModel
         public DateTime Date { get; set; }
         public IFormFile Image { get; set; }
         public string Description { get; set; }
-
+        public string IsNew { get; set; }
         public List<IMG> EventImages { get; set; }
 
         

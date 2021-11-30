@@ -24,7 +24,7 @@ namespace ShitoRyuSatokia.Models.MicroModel
         public string location { get; set; }
         public string Regulation { get; set; }
         public IFormFile InstructorImage { get; set; }
-
+        public string IsNew { get; set; }
 
 
 

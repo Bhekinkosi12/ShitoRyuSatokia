@@ -17,6 +17,8 @@
 
                             </div>
                         </div>
+                        <input asp-for="IsNew" value="@Model.IsNew" hidden />
+                        <input asp-for="Id" value="@Model.Id" hidden />
                         <input hidden asp-for="Cover_Image" value="@Model.Cover_Image" />
                         <div class="col-lg-6 offset-lg-3" style="margin-bottom: 60px;">
                             <div class="container_">
@@ -29,7 +31,7 @@
                                             <i class="fas fa-cloud-upload-alt"></i>
                                         </div>
                                         <div class="text">
-                                           
+
                                         </div>
                                     </div>
                                     <div id="cancel-btn">
@@ -57,7 +59,7 @@
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="date" asp-for="Date" id="name"  autocomplete="on" required>
+                                        <input type="date" asp-for="Date" id="name" autocomplete="on" required>
                                     </fieldset>
                                 </div>
 
@@ -72,7 +74,7 @@
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea asp-for="Description"  type="text" class="form-control" id="message" placeholder="News description">@Model.Description</textarea>
+                                        <textarea asp-for="Description" type="text" class="form-control" id="message" placeholder="News description">@Model.Description</textarea>
                                     </fieldset>
                                 </div>
 
@@ -86,7 +88,7 @@
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <button type="submit"  id="form-submit" class="main-button ">Save Form</button>
+                                        <button type="submit" id="form-submit" class="main-button ">Save Form</button>
                                     </fieldset>
                                 </div>
 
