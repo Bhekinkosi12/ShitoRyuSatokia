@@ -182,6 +182,25 @@ namespace ShitoRyuSatokia.Services
 
         }
 
+        public async Task<bool> UpdateNews(News news)
+        {
+
+            try
+            {
+                var item = (await client.Child("News").OnceAsync<News>()).Where(x => x.Object.Id == news.Id).FirstOrDefault();
+
+                await client.Child("News").Child(item.Key).PostAsync(news);
+
+
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
 
 

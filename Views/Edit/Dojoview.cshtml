@@ -131,12 +131,13 @@
 
                             </div>
                         </div>
+                        <input asp-for="Dojo_Instructor_Image" value="@Model.Dojo_Instructor_Image" hidden />
 
                         <div class="col-lg-6 offset-lg-3" style="margin-bottom: 60px;">
                             <div class="container_">
                                 <div class="wrapper_">
                                     <div class="image">
-                                        <img src="" alt="">
+                                        <img src="@Model.Dojo_Instructor_Image" alt="">
                                     </div>
                                     <div class="content">
                                         <div class="icon">

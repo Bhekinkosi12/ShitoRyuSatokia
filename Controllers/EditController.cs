@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShitoRyuSatokia.Models;
+using ShitoRyuSatokia.Services;
 using ShitoRyuSatokia.Models.MicroModel;
+using Microsoft.Extensions.Hosting;
 
 namespace ShitoRyuSatokia.Controllers
 {
@@ -12,7 +14,7 @@ namespace ShitoRyuSatokia.Controllers
     {
 
         public static string Newss;
-
+        
         public IActionResult Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
@@ -53,7 +55,11 @@ namespace ShitoRyuSatokia.Controllers
         [HttpPost]
         public IActionResult UpdateDojo(Dojo dojo)
         {
+            PostViewModel postViewModel = new PostViewModel();
+
+            postViewModel.UpdateDojo(dojo);
            
+
             return View("Index");
                                
         }
@@ -61,6 +67,9 @@ namespace ShitoRyuSatokia.Controllers
         [HttpPost]
         public IActionResult UpdateNews(News news)
         {
+            PostViewModel postViewModel = new PostViewModel();
+
+            postViewModel.UpDateNews(news);
 
             return View("Index");
 
