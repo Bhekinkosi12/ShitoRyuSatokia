@@ -59,16 +59,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - ShitoRyuSatokia - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 
-    @{ 
+    @{
         string at = "@";
     }
-
+    <script src="~/assets/js/Firebase.js"></script>
 
     <script>
          const wrapper = document.querySelector(".wrapper_");
@@ -76,7 +71,8 @@
          const defaultBtn = document.querySelector("#default-btn");
          const customBtn = document.querySelector("#custom-btn");
          const cancelBtn = document.querySelector("#cancel-btn i");
-         const img = document.querySelector("img");
+        const img = document.querySelector("img");
+        const imgInput = document.querySelector("#imgInput");
          let regExp = /[0-9a-zA-Z\^\&\'\@at\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
          function defaultBtnActive(){
            defaultBtn.click();
@@ -94,7 +90,11 @@
                img.src = "";
                wrapper.classList.remove("active");
              })
-             reader.readAsDataURL(file);
+               reader.readAsDataURL(file);
+               var storageref = firebase.storage().ref('img/' + file.name);
+              
+               var task = storageref.put(file).then(x => x.ref.getDownloadURL()).then(url => imgInput.value = url);
+
            }
            if(this.value){
              let valueStore = this.value.match(regExp);
@@ -110,7 +110,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
 
-    <script src="~/assets/js/Firebase.js"></script>
+
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/popper.js"></script>

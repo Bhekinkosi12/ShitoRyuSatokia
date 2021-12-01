@@ -11,14 +11,17 @@ namespace ShitoRyuSatokia.Services
     {
 
 
-        public FirebaseStorageTask AddStoreStream(string name, Stream stream)
+        public  FirebaseStorageTask AddStoreStream(string name, Stream stream)
         {
             return new FirebaseStorage("shitoryukarate-ea3d5.appspot.com")
                 .Child("Compony")
+                
                 .Child(name)
                 .PutAsync(stream);
 
 
+
+           
         }
     }
 }

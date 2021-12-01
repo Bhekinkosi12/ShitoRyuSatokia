@@ -98,14 +98,15 @@ namespace ShitoRyuSatokia.Controllers
             }
             else
             {
+                postViewModel.AddDojo(dojo);
 
-            postViewModel.UpdateDojo(dojo);
+           /// postViewModel.UpdateDojo(dojo);
             }
 
-           
 
-            return View("Index");
-                               
+
+            return RedirectToAction("Index", "Edit");
+
         }
 
         [HttpPost]
@@ -118,12 +119,13 @@ namespace ShitoRyuSatokia.Controllers
             }
             else
             {
-            postViewModel.UpDateNews(news);
+                postViewModel.AddNews(news);
+           // postViewModel.UpDateNews(news);
 
             }
 
 
-            return View("Index");
+            return RedirectToAction("Index","Edit");
 
         }
 

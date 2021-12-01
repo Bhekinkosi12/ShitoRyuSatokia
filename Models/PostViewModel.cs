@@ -44,9 +44,9 @@ namespace ShitoRyuSatokia.Models
 
            var item = await userStorage.AddStoreStream(dojo.InstructorImage.FileName, stream);
 
-            _dojo.Dojo_Instructor_Image = item;
+            _dojo.Dojo_Instructor_Image =  item;
 
-
+                item = null;
 
                 await userDatabase.UpdateDojo(_dojo);
 
@@ -78,9 +78,10 @@ namespace ShitoRyuSatokia.Models
 
               var imgData = await userStorage.AddStoreStream(news.Image.FileName, imag);
 
-                _news.Cover_Image = imgData;
+                _news.Cover_Image =  imgData;
 
                 _news.Image = null;
+
 
 
                 await userDatabase.UpdateNews(_news);
@@ -103,17 +104,45 @@ namespace ShitoRyuSatokia.Models
         {
             UserDatabase userDatabase = new UserDatabase();
             UserStorage userStorage = new UserStorage();
-            Dojo _dojo = dojo;
+            string link;
+
+
 
             if (dojo.InstructorImage != null)
             {
 
-                var stream = dojo.InstructorImage.OpenReadStream();
+                using (var stream = dojo.InstructorImage.OpenReadStream())
+                {
+
+                    var item = await userStorage.AddStoreStream(dojo.InstructorImage.FileName, stream as FileStream);
+
+                    // _dojo.Dojo_Instructor_Image = item;
+                    link = item;
+
+                   
+                }
 
 
-                var item = await userStorage.AddStoreStream(dojo.InstructorImage.FileName, stream);
+                Dojo _dojo = new Dojo()
+                {
+                     Dojo_Description = dojo.Dojo_Description,
+                      Dojo_Instructor_Description = dojo.Dojo_Instructor_Description,
+                       Dojo_Instructor = dojo.Dojo_Instructor,
+                        Dojo_Instructor_Email = dojo.Dojo_Instructor_Email,
+                         Dojo_Instructor_Image = link,
+                          Dojo_Instructor_Number = dojo.Dojo_Instructor_Number,
+                           Dojo_Instructor_Position = dojo.Dojo_Instructor_Position,
+                            Dojo_Instructor_Surname = dojo.Dojo_Instructor_Surname,
+                             Dojo_Name = dojo.Dojo_Name,
+                              Dojo_Schedule = dojo.Dojo_Schedule,
+                               Dojo_Time = dojo.Dojo_Time,
+                                ID = dojo.ID,
+                                 location = dojo.location,
+                                  Regulation = dojo.Regulation
+                };
 
-                _dojo.Dojo_Instructor_Image = item;
+
+
 
 
 
@@ -123,7 +152,7 @@ namespace ShitoRyuSatokia.Models
             else
             {
 
-                await userDatabase.AddDojoAsync(_dojo);
+                await userDatabase.AddDojoAsync(dojo);
 
             }
 
@@ -136,19 +165,28 @@ namespace ShitoRyuSatokia.Models
             UserStorage userStorage = new UserStorage();
 
 
-            News _news = news;
+            News _news = new News();
+            _news = news;
 
             if (news.Image != null)
             {
 
                 var imag = news.Image.OpenReadStream();
 
+                
+                
 
-                var imgData = await userStorage.AddStoreStream(news.Image.FileName, imag);
+                var imgData = await userStorage.AddStoreStream(news.Image.FileName, imag as FileStream);
 
-                _news.Cover_Image = imgData;
+                var link =  imgData;
 
-                _news.Image = null;
+               // _news.Cover_Image = await imgData;
+
+               // _news.Image = null;
+
+
+              
+
 
 
                 await userDatabase.AddNews(_news);
