@@ -139,6 +139,30 @@ namespace ShitoRyuSatokia.Services
             }
 
         }
+        
+        public async Task<List<Dojo>> GetAllDojos()
+        {
+            List<Dojo> _list = new List<Dojo>();
+            try
+            {
+
+               var list =  await client.Child("News").OnceAsync<Dojo>();
+
+
+                foreach(var i in list)
+                {
+                    _list.Add(i.Object);
+                }
+
+                return await Task.FromResult(_list);
+
+            }
+            catch
+            {
+                return _list;
+            }
+
+        }
 
         public async Task<List<News>> GetAllNews()
         {

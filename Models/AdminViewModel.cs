@@ -21,6 +21,7 @@ namespace ShitoRyuSatokia.Models
         public AdminViewModel(bool IsFirstRoute = true)
         {
             onDemoData();
+            getDojos();
             if (!IsFirstRoute)
             {
                 List<Dojo> dojolist = new List<Dojo>();
@@ -97,8 +98,26 @@ namespace ShitoRyuSatokia.Models
 
 
 
+
+        async void getDojos()
+        {
+            UserDatabase userDatabase = new UserDatabase();
+
+            DojoList = new List<Dojo>();
+
+
+            DojoList = await userDatabase.GetAllDojos();
+           
+
+
+
+        }
+
+
+
         void onDemoData()
         {
+            /*
             DojoList = new List<Dojo>()
             {
                 new Dojo
@@ -167,7 +186,7 @@ namespace ShitoRyuSatokia.Models
                 }
             };
 
-
+            */
 
 
             NewsList = new List<News>()

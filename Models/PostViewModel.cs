@@ -110,16 +110,20 @@ namespace ShitoRyuSatokia.Models
 
             if (dojo.InstructorImage != null)
             {
-
-                using (var stream = dojo.InstructorImage.OpenReadStream())
+                var filepath = Path.GetTempFileName();
+                var a = dojo.InstructorImage;
+                using (var stream = a.OpenReadStream())
                 {
 
-                    var item = await userStorage.AddStoreStream(dojo.InstructorImage.FileName, stream as FileStream);
+                    
+                    
+                    
+                    var item = await userStorage.AddStoreStream(dojo.InstructorImage.FileName, (FileStream)stream );
 
                     // _dojo.Dojo_Instructor_Image = item;
                     link = item;
 
-                   
+
                 }
 
 
@@ -165,27 +169,59 @@ namespace ShitoRyuSatokia.Models
             UserStorage userStorage = new UserStorage();
 
 
-            News _news = new News();
-            _news = news;
+           
 
             if (news.Image != null)
             {
 
-                var imag = news.Image.OpenReadStream();
+              //  var imag = news.Image.OpenReadStream();
 
+
+
+                var filepath = Path.GetTempFileName();
                 
+
+                using (var stream = File.Create(filepath))
+                {
+
+                    var a = news.Image;
+                    await a.CopyToAsync(stream);
+
+                    var imgData = await userStorage.AddStoreStream(news.Image.FileName, stream);
+                    // _dojo.Dojo_Instructor_Image = item;
+                   
+
+
+                }
+
+
+
+
+
+               
                 
 
-                var imgData = await userStorage.AddStoreStream(news.Image.FileName, imag as FileStream);
+                // _news.Cover_Image = await imgData;
 
-                var link =  imgData;
-
-               // _news.Cover_Image = await imgData;
-
-               // _news.Image = null;
+                // _news.Image = null;
 
 
-              
+                News _news = new News()
+                {
+                     Brief = news.Brief,
+                      Date = news.Date,
+                       Description = news.Description,
+                        heading = news.heading,
+                         Id = news.Id,
+                          IsNew = news.IsNew,
+                          
+
+                };
+
+
+
+
+
 
 
 
@@ -195,7 +231,7 @@ namespace ShitoRyuSatokia.Models
             }
             else
             {
-                await userDatabase.AddNews(_news);
+                await userDatabase.AddNews(news);
             }
         }
 

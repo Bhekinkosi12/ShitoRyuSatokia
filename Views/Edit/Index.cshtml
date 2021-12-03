@@ -17,6 +17,7 @@
                     <button type="submit" class="btn btn-success">Add</button>
 
                 </form>
+               
             </div>
 
 
@@ -45,10 +46,12 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success" style="margin-top: 10px;">Edit</button>
+                               
                             </div>
                         </div>
 
                         Html.EndForm();
+                        
                     }
 
 
@@ -79,6 +82,10 @@
             <div class="col-lg-12">
                 <form asp-controller="Edit" asp-action="AddNews">
                     <button type="submit" class="btn btn-success">Add</button>
+
+                </form>
+                <form asp-controller="Edit" asp-action="AddNews">
+                    <button type="submit" class="btn btn-warning">Delete</button>
 
                 </form>
             </div>

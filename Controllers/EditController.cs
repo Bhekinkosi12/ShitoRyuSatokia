@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using ShitoRyuSatokia.Models;
 using ShitoRyuSatokia.Services;
 using ShitoRyuSatokia.Models.MicroModel;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace ShitoRyuSatokia.Controllers
 {
@@ -88,21 +90,82 @@ namespace ShitoRyuSatokia.Controllers
 
 
         [HttpPost]
-        public IActionResult UpdateDojo(Dojo dojo)
+        public async Task<IActionResult> UpdateDojo(Dojo dojo,IFormFile file)
         {
             PostViewModel postViewModel = new PostViewModel();
+            UserStorage userStorage = new UserStorage();
 
-            if(dojo.IsNew == "true")
+
+        
+            string link;
+
+
+
+            if(file != null)
             {
-                postViewModel.AddDojo(dojo);
+
+               var stream =  file.OpenReadStream();
+    
+
+                    link = await userStorage.AddStoreStream(file.Name, stream);
+            
+
+
+
+                Dojo _dojo = new Dojo()
+                {
+                    Dojo_Description = dojo.Dojo_Description,
+                    Dojo_Instructor_Description = dojo.Dojo_Instructor_Description,
+                    Dojo_Instructor = dojo.Dojo_Instructor,
+                    Dojo_Instructor_Email = dojo.Dojo_Instructor_Email,
+                    Dojo_Instructor_Image = link,
+                    Dojo_Instructor_Number = dojo.Dojo_Instructor_Number,
+                    Dojo_Instructor_Position = dojo.Dojo_Instructor_Position,
+                    Dojo_Instructor_Surname = dojo.Dojo_Instructor_Surname,
+                    Dojo_Name = dojo.Dojo_Name,
+                    Dojo_Schedule = dojo.Dojo_Schedule,
+                    Dojo_Time = dojo.Dojo_Time,
+                    ID = dojo.ID,
+                    location = dojo.location,
+                    Regulation = dojo.Regulation
+                };
+
+
+
+
+
+
+                if (dojo.IsNew == "true")
+                {
+                    postViewModel.AddDojo(_dojo);
+                }
+                else
+                {
+                    postViewModel.AddDojo(_dojo);
+
+                    /// postViewModel.UpdateDojo(dojo);
+                }
+
+
             }
             else
             {
-                postViewModel.AddDojo(dojo);
 
-           /// postViewModel.UpdateDojo(dojo);
+
+                if (dojo.IsNew == "true")
+                {
+                    postViewModel.AddDojo(dojo);
+                }
+                else
+                {
+                    postViewModel.AddDojo(dojo);
+
+                    /// postViewModel.UpdateDojo(dojo);
+                }
             }
 
+
+           
 
 
             return RedirectToAction("Index", "Edit");
@@ -110,16 +173,43 @@ namespace ShitoRyuSatokia.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateNews(News news)
+        public async Task<IActionResult> UpdateNews(News news,IFormFile file)
         {
             PostViewModel postViewModel = new PostViewModel();
-            if(news.IsNew == "true")
+            UserStorage userStorage = new UserStorage();
+
+            News _news = new News();
+            _news = news;
+
+            string link;
+
+            if (file != null)
             {
-                postViewModel.AddNews(news);
+
+                var stream = file.OpenReadStream();
+
+
+                link = await userStorage.AddStoreStream(file.Name, stream);
+
+
+                _news.Cover_Image = link;
+
+               
+
+
+
+
+            }
+
+
+
+            if (news.IsNew == "true")
+            {
+                postViewModel.AddNews(_news);
             }
             else
             {
-                postViewModel.AddNews(news);
+                postViewModel.AddNews(_news);
            // postViewModel.UpDateNews(news);
 
             }
