@@ -14,34 +14,25 @@ namespace ShitoRyuSatokia.Controllers
         public IActionResult Index()
         {
 
-            JoinViewModel joinViewModel = new JoinViewModel();
-            return View(joinViewModel);
+            Dojo dojo = new Dojo();
+            return View(dojo);
         }
 
         [HttpPost]
 
-        public  IActionResult Subform(string Dname,string DIname,string Demail,string DIposition,string Dlocation,string DIinfo,string Dinfo,string Drule,string Dtime)
+        public async Task<IActionResult> Subform(Dojo dojo)
         {
 
             JoinViewModel joinView = new JoinViewModel();
-            
 
 
-            Dojo dojo = new Dojo()
-            {
-                 Dojo_Name = Dname,
-                  Dojo_Instructor = DIname,
-                   Dojo_Instructor_Email = Demail,
-                    Dojo_Instructor_Position = DIposition,
-                      location = Dlocation,
-                       Dojo_Instructor_Description = DIinfo,
-                         Dojo_Description = Dinfo,
-                          Dojo_Time = Dtime,
-                           Regulation = Drule
-            };
+
+            UserDatabase userDatabase = new UserDatabase();
+            var IsDataSent = await userDatabase.AddRequest(dojo);
+
             joinView.SetData(dojo);
 
-            AddRequest(dojo);
+           await AddRequest(dojo);
 
 
 

@@ -64,7 +64,7 @@ namespace ShitoRyuSatokia.Services
             try
             {
 
-                var lists = await client.Child("Requests").OnceAsync<Dojo>();
+                var lists = (await client.Child("Requests").OnceAsync<Dojo>()).ToList();
 
                 foreach(var i in lists)
                 {
@@ -146,7 +146,7 @@ namespace ShitoRyuSatokia.Services
             try
             {
 
-               var list =  await client.Child("News").OnceAsync<Dojo>();
+                var list = (await client.Child("Dojos").OnceAsync<Dojo>()).ToList();
 
 
                 foreach(var i in list)

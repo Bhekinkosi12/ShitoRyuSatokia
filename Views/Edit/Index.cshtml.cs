@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,13 @@ namespace ShitoRyuSatokia.Views.Edit
         public void OnGet()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
-            DojoList = adminViewModel.DojoList;
+           // DojoList = adminViewModel.DojoList;
         }
 
         public IndexModel()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
-            DojoList = adminViewModel.DojoList;
+           // DojoList = adminViewModel.DojoList;
 
         }
 

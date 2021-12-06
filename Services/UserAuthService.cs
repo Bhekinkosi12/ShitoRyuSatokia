@@ -12,51 +12,83 @@ namespace ShitoRyuSatokia.Services
 {
     public class UserAuthService
     {
-        FirebaseClient client;
-        static string token;
+        string APIKEY;
         public UserAuthService()
         {
          
-            client = new FirebaseClient("https://shitoryukarate-ea3d5-default-rtdb.firebaseio.com/");
+          
         }
 
 
-       async  Task<bool> AddDojo(Dojo dojo)
-        {
-            try
-            {
-                await client.Child("Dojos").PostAsync(dojo);
-              return await Task.FromResult(true);
-            }
-            catch
-            {
-                return await Task.FromResult(false);
-            }
-        }
 
+        public async Task<string> Login(string email, string password)
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(APIKEY));
+         
 
-        public async Task SignupTODbAsync(string email,string password)
-        {
-           
-        }
-        public async Task<List<Dojo>> GetAllDojos()
-        {
-            List<Dojo> dojolist = new List<Dojo>();
             try
             {
 
-            var items = await client.Child("Dojos").OnceAsync<Dojo>();
+
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+
+
+                var content = await auth.GetFreshAuthAsync();
+
+             
+
+
+
+                return await Task.FromResult(content.FirebaseToken);
             }
             catch
             {
-                dojolist = null;
+                return await Task.FromResult(string.Empty);
             }
 
-            return await Task.FromResult(dojolist);
-        } 
+        }
 
 
-        
+
+        public async Task<string> Signup(string email, string password)
+        {
+
+            try
+            {
+
+                //  var authProvider = new FirebaseAuthProvider();
+
+
+
+                var authProvider = new FirebaseAuthProvider(new FirebaseConfig(APIKEY));
+
+                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password);
+
+                string getToken = auth.FirebaseToken;
+
+
+
+             
+
+
+                return await Task.FromResult(getToken);
+            }
+            catch
+            {
+
+
+                return await Task.FromResult(string.Empty);
+            }
+
+
+        }
+
+
+
+
+
+
+
 
 
     }

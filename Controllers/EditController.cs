@@ -17,10 +17,10 @@ namespace ShitoRyuSatokia.Controllers
 
         public static string Newss;
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
-            return View(adminViewModel);
+            return await Task.FromResult(View(adminViewModel));
         }
 
         public IActionResult Dojoview(string DojoName)

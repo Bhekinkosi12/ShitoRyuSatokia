@@ -1,38 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ShitoRyuSatokia.Models.MicroModel;
+﻿using ShitoRyuSatokia.Models.MicroModel;
 using ShitoRyuSatokia.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ShitoRyuSatokia.Models
 {
     public class AdminViewModel
     {
 
-       public List<Dojo> DojoList { get; set; }
+        public ObservableCollection<Dojo> DojoList { get; set; }
         public List<News> NewsList { get; set; }
 
-        public  Dojo SelectedDojo { get; set; }
-        public  News SelectedNews { get; set; }
+        public Dojo SelectedDojo { get; set; }
+        public News SelectedNews { get; set; }
 
 
 
         public AdminViewModel(bool IsFirstRoute = true)
         {
             onDemoData();
-            getDojos();
+
             if (!IsFirstRoute)
             {
-                List<Dojo> dojolist = new List<Dojo>();
-                foreach(var i in DojoList)
+                ObservableCollection<Dojo> dojolist = new ObservableCollection<Dojo>();
+                foreach (var i in DojoList)
                 {
                     i.Dojo_Instructor_Image = $"../{i.Dojo_Instructor_Image}";
                     dojolist.Add(i);
                 }
                 DojoList = dojolist;
             }
-            
+
         }
 
         public AdminViewModel(string SelectedDojoName, bool IsNews = false)
@@ -71,20 +71,20 @@ namespace ShitoRyuSatokia.Models
         {
             return SelectedNews;
         }
-       
 
 
 
 
-       async void getNewsData()
+
+        async void getNewsData()
         {
-                onDemoData();
+            onDemoData();
             UserDatabase userDatabase = new UserDatabase();
             var list = await userDatabase.GetAllNews();
-            
 
 
-            if(list.Count != 0)
+
+            if (list.Count != 0)
             {
                 NewsList = list;
             }
@@ -103,12 +103,19 @@ namespace ShitoRyuSatokia.Models
         {
             UserDatabase userDatabase = new UserDatabase();
 
-            DojoList = new List<Dojo>();
+            ObservableCollection<Dojo> dojos = new ObservableCollection<Dojo>();
+            DojoList = new ObservableCollection<Dojo>();
 
 
-            DojoList = await userDatabase.GetAllDojos();
-           
+           var  _dojos = await userDatabase.GetAllDojos();
 
+            foreach(var i in _dojos)
+            {
+                dojos.Add(i);
+                DojoList.Add(i);
+            }
+
+          //  DojoList = dojos;
 
 
         }
@@ -117,6 +124,7 @@ namespace ShitoRyuSatokia.Models
 
         void onDemoData()
         {
+            getDojos();
             /*
             DojoList = new List<Dojo>()
             {
@@ -215,7 +223,7 @@ namespace ShitoRyuSatokia.Models
                                     URL = "../images/off3.png"
                               }
                          },
-                         
+
                           heading = "Senior Grading Section"
                 },
 
