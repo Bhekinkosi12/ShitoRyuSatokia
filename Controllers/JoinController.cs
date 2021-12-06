@@ -32,7 +32,7 @@ namespace ShitoRyuSatokia.Controllers
 
             joinView.SetData(dojo);
 
-           await AddRequest(dojo);
+           
 
 
 
