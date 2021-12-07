@@ -65,30 +65,7 @@
 
 
 
-                    <div class="col-md-12">
-                        <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                            @foreach (var i in Model.DojoList)
-                            {
-
-                                <div class="item" style="border: 0.5px solid gray;">
-                                    <div class="testimony-wrap py-4">
-                                        <div class="text">
-                                            <p class="mb-4">@i.Dojo_Instructor_Description</p>
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-img" style="background-image: url(@i.Dojo_Instructor_Image)"></div>
-                                                <div class="pl-3">
-                                                    <p class="name">@i.Dojo_Instructor</p>
-                                                    <span class="position">@i.Dojo_Instructor_Position</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-
-
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -321,6 +298,37 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            @foreach (var i in Model.DojoList)
+                            {
+
+                                <div class="item" style="border: 0.5px solid gray;">
+                                    <div class="testimony-wrap py-4">
+                                        <div class="text">
+                                            <p class="mb-4">@i.Dojo_Instructor_Description</p>
+                                            <div class="d-flex align-items-center">
+                                                <div class="user-img" style="background-image: url(@i.Dojo_Instructor_Image)"></div>
+                                                <div class="pl-3">
+                                                    <p class="name">@i.Dojo_Instructor</p>
+                                                    <span class="position">@i.Dojo_Instructor_Position</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+
+
 
                 </div>
             </div>

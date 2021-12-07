@@ -28,7 +28,7 @@
 
                 <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
 
-                    @foreach (var i in await userData.GetAllDojos())
+                    @foreach (var i in Model.DojoList)
                     {
                         Html.BeginForm("EditDojo", "Edit", FormMethod.Post);
 
