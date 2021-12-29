@@ -20,6 +20,10 @@ namespace ShitoRyuSatokia.Models.MicroModel
         public List<IMG> EventImages { get; set; }
 
         
+        void a()
+        {
+            
+        }
 
 
     }

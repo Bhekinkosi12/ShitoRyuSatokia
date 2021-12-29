@@ -515,7 +515,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                        @foreach (var i in Model.DojoList)
+                        @foreach (var i in ViewBag.DojoListing)
                         {
 
                             <div class="item">
@@ -525,7 +525,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="user-img" style="background-image: url(@i.Dojo_Instructor_Image)"></div>
                                             <div class="pl-3">
-                                                <p class="name">@i.Dojo_Name</p>
+                                                <p class="name">@i.Dojo_Instructor</p>
                                                 <span class="position">@i.Dojo_Instructor_Position</span>
                                             </div>
                                         </div>
@@ -559,16 +559,16 @@
                 <div class="col-md-12">
                     <div class="featured-carousel owl-carousel">
 
-                        @foreach (var i in Model.NewsList)
+                        @foreach (var i in ViewBag.NewsListing)
                         {
                             Html.BeginForm("SelectNews", "Home");
                             <div class="item" style="border: 0.3px solid #191919;">
                                 <div class="blog-entry">
                                     <div class="block-20 d-flex align-items-start" style="background-image: url(@i.Cover_Image);">
                                         <div class="meta-date text-center p-2">
-                                            <span class="day">26</span>
-                                            <span class="mos">Nov.</span>
-                                            <span class="yr">2019</span>
+                                            <span class="day">@i.Date.Day</span>
+                                            <span class="mos">@i.Date.Month</span>
+                                            <span class="yr">@i.Date.year</span>
                                         </div>
                                     </div>
                                     <div style="display: none; visibility: hidden;">

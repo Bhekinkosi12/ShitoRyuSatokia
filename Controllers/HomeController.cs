@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using ShitoRyuSatokia.Models;
+using ShitoRyuSatokia.Services;
 
 namespace ShitoRyuSatokia.Controllers
 {
@@ -19,9 +19,17 @@ namespace ShitoRyuSatokia.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
             AdminViewModel viewModel = new AdminViewModel();
+            UserDatabase userDatabase = new UserDatabase();
+
+            var list = await userDatabase.GetAllDojos();
+            var listN = await userDatabase.GetAllNews();
+
+            ViewBag.DojoListing = list;
+            ViewBag.NewsListing = listN;
+            
             return View(viewModel);
         }
 
@@ -30,9 +38,20 @@ namespace ShitoRyuSatokia.Controllers
             return View();
         } 
         
-        public IActionResult Intro()
+        public async Task<ActionResult> Intro()
         {
             AdminViewModel viewModel = new AdminViewModel(false);
+
+            
+            UserDatabase userDatabase = new UserDatabase();
+
+            var list = await userDatabase.GetAllDojos();
+            var listN = await userDatabase.GetAllNews();
+
+            ViewBag.DojoListing = list;
+            ViewBag.NewsListing = listN;
+
+
             return View(viewModel);
         } 
         public IActionResult Image()
