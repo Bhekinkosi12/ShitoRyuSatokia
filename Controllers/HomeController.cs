@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ShitoRyuSatokia.Services;
+using ShitoRyuSatokia.Models.MicroModel;
 
 namespace ShitoRyuSatokia.Controllers
 {
@@ -61,9 +62,30 @@ namespace ShitoRyuSatokia.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectNews(string newsid)
+        public async Task<ActionResult> SelectNews(string newsid)
         {
+            UserDatabase userDatabase = new UserDatabase();
             AdminViewModel viewModel = new AdminViewModel(newsid, true);
+            var listN = await userDatabase.GetAllNews();
+
+
+            News news = new News();
+            
+
+            foreach(var i in listN)
+            {
+                if(i.Id == newsid)
+                {
+                    news = i;
+                }
+            }
+
+            ViewBag.Selectednews = news;
+
+
+            
+
+
             return View("Image",viewModel);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

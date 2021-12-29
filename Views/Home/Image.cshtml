@@ -10,27 +10,27 @@
     <div class="col-12">
         <div class="row">
             <div class="C-Cover col-12 m-auto">
-                <img src="@Model.SelectedNews.Cover_Image" />
+                <img src="@ViewBag.SelectedNews.Cover_Image" />
             </div>
 
             <hr class="C-Line" />
             <div class="CHead col-12">
-                <h2>@Model.SelectedNews.heading</h2>
+                <h2>@ViewBag.SelectedNews.heading</h2>
             </div>
 
             <hr class="C-Line" />
 
             <div class="CMidBody col-12">
-                <h4>@Model.SelectedNews.Brief</h4>
+                <h4>@ViewBag.SelectedNews.Brief</h4>
             </div>
 
             <div class=" col-12">
-                <p style="text-align: center;"> 20 November 2021</p>
+                <p style="text-align: center;"> <span>@ViewBag.Date.Day</span>/ <span>@ViewBag.Date.Month</span>/ <span>@ViewBag.Date.Year</span></p>
             </div>
             <hr class="C-Line" />
 
             <div class="CMidBody col-12">
-                <h6>@Model.SelectedNews.Description</h6>
+                <h6>@ViewBag.SelectedNews.Description</h6>
             </div>
 
 
@@ -38,24 +38,7 @@
 
 
 
-            <div class="C-Carosel col-md-12">
-                <div class="featured-carousel owl-carousel">
-
-                    @foreach (var item in Model.SelectedNews.EventImages)
-                    {
-                        <div class="item C-image-Block">
-                            <img src="@item.URL" />
-                        </div>
-
-                    }
-
-
-
-                </div>
-
-            </div>
-
-
+         
 
 
         </div>
