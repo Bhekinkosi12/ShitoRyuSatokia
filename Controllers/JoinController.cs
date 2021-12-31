@@ -18,9 +18,14 @@ namespace ShitoRyuSatokia.Controllers
             return View(dojo);
         }
 
+        public ActionResult Success()
+        {
+            return View();
+        }
+
         [HttpPost]
 
-        public async Task<IActionResult> Subform(Dojo dojo)
+        public async Task<ActionResult> Subform(Dojo dojo)
         {
 
             JoinViewModel joinView = new JoinViewModel();
@@ -30,27 +35,34 @@ namespace ShitoRyuSatokia.Controllers
             UserDatabase userDatabase = new UserDatabase();
             var IsDataSent = await userDatabase.AddRequest(dojo);
 
-            joinView.SetData(dojo);
-
-           
+            //  joinView.SetData(dojo);
 
 
+            if (IsDataSent)
+            {
 
-            JoinViewModel joinV = new JoinViewModel();
+            return View("Success");
+            }
+            else
+            {
+                return View("Index");
+            }
 
-            return View("Index",joinV);
+
+
         }
 
 
 
-      async Task AddRequest(Dojo _dojo)
+
+        [HttpPost]
+        public ActionResult OnDone()
         {
-            UserDatabase userDatabase = new UserDatabase();
-            var IsDataSent = await userDatabase.AddRequest(_dojo);
-
-           
-
+            
+            return RedirectToAction("Index", "Home");
         }
+
+  
 
 
 

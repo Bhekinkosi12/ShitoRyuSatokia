@@ -17,9 +17,15 @@ namespace ShitoRyuSatokia.Controllers
 
         public static string Newss;
         
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
+            UserDatabase userDatabase = new UserDatabase();
+           var item = await userDatabase.GetAllDojos();
+
+            ViewBag.Model = item;
+
+
             return await Task.FromResult(View(adminViewModel));
         }
 
@@ -35,17 +41,29 @@ namespace ShitoRyuSatokia.Controllers
 
 
         [HttpPost]
-        public IActionResult EditDojo(string DojoName)
+        public async Task<ActionResult> EditDojo(string DojoName)
         {
-            
+            UserDatabase userDatabase = new UserDatabase();
+            Dojo _dojo = new Dojo();
+            var list = await userDatabase.GetAllDojos();
+
+            foreach(var i in list)
+            {
+                if(i.ID == DojoName)
+                {
+                    _dojo = i;
+                }
+            }
+
+
             AdminViewModel adminView = new AdminViewModel(DojoName);
 
             var item = adminView.ReturnDojo();
 
-            item.IsNew = "false";
+            _dojo.IsNew = "false";
 
 
-            return View("Dojoview",item);
+            return View("Dojoview",_dojo);
         }
 
         [HttpPost]
@@ -90,7 +108,7 @@ namespace ShitoRyuSatokia.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> UpdateDojo(Dojo dojo,IFormFile file)
+        public async Task<ActionResult> UpdateDojo(Dojo dojo,IFormFile file)
         {
             PostViewModel postViewModel = new PostViewModel();
             UserStorage userStorage = new UserStorage();
@@ -110,7 +128,7 @@ namespace ShitoRyuSatokia.Controllers
                     link = await userStorage.AddStoreStream(file.Name, stream);
             
 
-
+                
 
                 Dojo _dojo = new Dojo()
                 {
@@ -173,10 +191,11 @@ namespace ShitoRyuSatokia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateNews(News news,IFormFile file)
+        public async Task<ActionResult> UpdateNews(News news,IFormFile file)
         {
             PostViewModel postViewModel = new PostViewModel();
             UserStorage userStorage = new UserStorage();
+            UserDatabase userDatabase = new UserDatabase();
 
             News _news = new News();
             _news = news;
@@ -205,12 +224,15 @@ namespace ShitoRyuSatokia.Controllers
 
             if (news.IsNew == "true")
             {
-                postViewModel.AddNews(_news);
+              //  postViewModel.AddNews(_news);
+               await userDatabase.AddNews(_news);
             }
             else
             {
-                postViewModel.AddNews(_news);
-           // postViewModel.UpDateNews(news);
+                //  postViewModel.AddNews(_news);
+                // postViewModel.UpDateNews(news);
+
+                await userDatabase.UpdateNews(_news);
 
             }
 

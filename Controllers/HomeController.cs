@@ -37,8 +37,12 @@ namespace ShitoRyuSatokia.Controllers
         public IActionResult Privacy()
         {
             return View();
-        } 
-        
+        }
+        public IActionResult Galary()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> Intro()
         {
             AdminViewModel viewModel = new AdminViewModel(false);
@@ -80,7 +84,7 @@ namespace ShitoRyuSatokia.Controllers
                 }
             }
 
-            ViewBag.Selectednews = news;
+            ViewBag.SelectedNews = news;
 
 
             
