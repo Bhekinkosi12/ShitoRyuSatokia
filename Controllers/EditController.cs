@@ -21,12 +21,26 @@ namespace ShitoRyuSatokia.Controllers
         {
             AdminViewModel adminViewModel = new AdminViewModel();
             UserDatabase userDatabase = new UserDatabase();
+            UserAuthService userAuth = new UserAuthService();
            var item = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
 
-            ViewBag.Model = item;
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = item;
+            ViewBag.Modeles = items;
 
 
-            return await Task.FromResult(View(adminViewModel));
+            if (userAuth.IsAuth())
+            {
+
+            return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+
         }
 
         public IActionResult Dojoview(string DojoName)
@@ -39,6 +53,10 @@ namespace ShitoRyuSatokia.Controllers
             return View();
         }
 
+        public IActionResult Requestview(string Newsid)
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<ActionResult> EditDojo(string DojoName)
@@ -66,17 +84,111 @@ namespace ShitoRyuSatokia.Controllers
             return View("Dojoview",_dojo);
         }
 
+
         [HttpPost]
-        public IActionResult EditNews(string Newsid)
+        public async Task<ActionResult> OpenRequest(string DojoName)
         {
+            UserDatabase userDatabase = new UserDatabase();
+            Dojo _dojo = new Dojo();
+            var list = await userDatabase.GetDojoRequest();
+
+            foreach (var i in list)
+            {
+                if (i.ID == DojoName)
+                {
+                    _dojo = i;
+                }
+            }
+
+
+            AdminViewModel adminView = new AdminViewModel(DojoName);
+
+            var item = adminView.ReturnDojo();
+
+            _dojo.IsNew = "false";
+
+
+            return View("Requestview", _dojo);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> AddDojo(Dojo dojo)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+
+            await userDatabase.AddDojoAsync(dojo);
+            
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteDojo(string id)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+
+            Dojo dojo = new Dojo()
+            {
+                ID = id
+            };
+
+            await userDatabase.DeleteDojo(dojo);
+
+            return View("Index");
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> EditRequest(string DojoName)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+            Dojo _dojo = new Dojo();
+            var list = await userDatabase.GetAllDojos();
+
+            foreach (var i in list)
+            {
+                if (i.ID == DojoName)
+                {
+                    _dojo = i;
+                }
+            }
+
+
+            AdminViewModel adminView = new AdminViewModel(DojoName);
+
+            var item = adminView.ReturnDojo();
+
+            _dojo.IsNew = "false";
+
+
+            return View("Dojoview", _dojo);
+        }
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> EditNews(string Newsid)
+        {
+            News news = new News();
             Newss = Newsid;
             AdminViewModel adminView = new AdminViewModel(Newsid, true);
+            UserDatabase userDatabase = new UserDatabase();
+            var dj = await userDatabase.GetAllNews();
+
+           foreach(var i in dj)
+            {
+                if(i.Id == Newsid)
+                {
+                    news = i;
+                }
+            }
 
             var item = adminView.ReturnNews();
 
-            item.IsNew = "false";
+            news.IsNew = "false";
 
-            return View("Newsview", item);
+            return View("Newsview", news);
         }
 
 
@@ -112,6 +224,7 @@ namespace ShitoRyuSatokia.Controllers
         {
             PostViewModel postViewModel = new PostViewModel();
             UserStorage userStorage = new UserStorage();
+            UserDatabase userDatabase = new UserDatabase();
 
 
         
@@ -125,7 +238,7 @@ namespace ShitoRyuSatokia.Controllers
                var stream =  file.OpenReadStream();
     
 
-                    link = await userStorage.AddStoreStream(file.Name, stream);
+                    link = await userStorage.AddStoreStream(Guid.NewGuid().ToString(), stream);
             
 
                 
@@ -155,11 +268,11 @@ namespace ShitoRyuSatokia.Controllers
 
                 if (dojo.IsNew == "true")
                 {
-                    postViewModel.AddDojo(_dojo);
+                    await userDatabase.AddDojoAsync(dojo);
                 }
                 else
                 {
-                    postViewModel.AddDojo(_dojo);
+                    await userDatabase.UpdateDojo(dojo);
 
                     /// postViewModel.UpdateDojo(dojo);
                 }
@@ -172,12 +285,13 @@ namespace ShitoRyuSatokia.Controllers
 
                 if (dojo.IsNew == "true")
                 {
-                    postViewModel.AddDojo(dojo);
+                    //postViewModel.AddDojo(dojo);
+                    await userDatabase.AddDojoAsync(dojo);
                 }
                 else
                 {
-                    postViewModel.AddDojo(dojo);
-
+                    // postViewModel.AddDojo(dojo);
+                    await userDatabase.UpdateDojo(dojo);
                     /// postViewModel.UpdateDojo(dojo);
                 }
             }
@@ -208,7 +322,7 @@ namespace ShitoRyuSatokia.Controllers
                 var stream = file.OpenReadStream();
 
 
-                link = await userStorage.AddStoreStream(file.Name, stream);
+                link = await userStorage.AddStoreStream(Guid.NewGuid().ToString(), stream);
 
 
                 _news.Cover_Image = link;

@@ -12,7 +12,8 @@ namespace ShitoRyuSatokia.Services
 {
     public class UserAuthService
     {
-        string APIKEY;
+        string APIKEY = "AIzaSyBeDXvk3UC_Wj5WUf8ylIFYfH3nA-5tCcQ";
+       static bool isAuth = false;
         public UserAuthService()
         {
          
@@ -35,8 +36,8 @@ namespace ShitoRyuSatokia.Services
 
                 var content = await auth.GetFreshAuthAsync();
 
-             
 
+                isAuth = true;
 
 
                 return await Task.FromResult(content.FirebaseToken);
@@ -68,7 +69,7 @@ namespace ShitoRyuSatokia.Services
 
 
 
-             
+                isAuth = true;
 
 
                 return await Task.FromResult(getToken);
@@ -88,7 +89,10 @@ namespace ShitoRyuSatokia.Services
 
 
 
-
+        public bool IsAuth()
+        {
+            return isAuth;
+        }
 
 
     }

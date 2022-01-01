@@ -13,7 +13,17 @@ namespace ShitoRyuSatokia.Controllers
     {
         public IActionResult Index()
         {
+            UserAuthService userAuth = new UserAuthService();
+            if (userAuth.IsAuth())
+            {
+                return RedirectToAction("Index", "Edit");
+            }
+            else
+            {
+
             return View();
+            }
+
         }
         public IActionResult Signin()
         {
@@ -25,13 +35,13 @@ namespace ShitoRyuSatokia.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> OnLogin(string email, string password)
+        public async Task<ActionResult> OnLogin(string email, string password)
         {
             UserAuthService userAuth = new UserAuthService();
 
             if(await userAuth.Login(email,password) != string.Empty)
             {
-                return RedirectToAction("Index","Edit");;
+                return RedirectToAction("Index","Edit");
             }
             else
             {
@@ -42,7 +52,7 @@ namespace ShitoRyuSatokia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> OnSignin(string email, string password)
+        public async Task<ActionResult> OnSignin(string email, string password)
         {
 
             UserAuthService userAuth = new UserAuthService();

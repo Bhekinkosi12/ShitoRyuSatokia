@@ -9,14 +9,13 @@
 
 <style>
 
-    .hidden{
+    .hidden {
         display: none;
         visibility: hidden;
     }
 
     .container_ {
         height: 350px;
-       
         position: relative;
     }
 
@@ -121,13 +120,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-                
-                   <form id="contact" asp-controller="Edit" asp-action="UpdateDojo" enctype="multipart/form-data" method="post" role="form" >
+
+                <form id="contact" asp-controller="Edit" asp-action="AddDojo" enctype="multipart/form-data" method="post" role="form">
 
                     <div class="row">
                         <div class="col-lg-6 offset-lg-3">
                             <div class="section-heading">
-                                <h6>Edit Form</h6>
+                                <h6>View Form</h6>
 
                             </div>
                         </div>
@@ -156,9 +155,10 @@
                                         File name
                                     </div>
                                 </div>
-                                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a Image</button>
+                                <!--
+                                <button type="button" onclick="defaultBtnActive()" id="custom-btn">Change the Image</button>
                                 <input name="file" id="default-btn" type="file" accept="image/*" hidden>
-                                
+                                -->
                             </div>
                         </div>
 
@@ -166,30 +166,17 @@
                             <div class="row">
 
 
-                   
+
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="text"  asp-for="Dojo_Name" value="@Model.Dojo_Name" id="name" placeholder="Dojo Name" autocomplete="on" >
+                                        <input type="text" asp-for="Dojo_Name" value="@Model.Dojo_Name" id="name" placeholder="Dojo Name" autocomplete="on">
                                     </fieldset>
                                 </div>
 
                                 <div class="col-lg-6">
 
                                     <fieldset>
-                                        <input type="text"  asp-for="Dojo_Instructor_Surname" value="@Model.Dojo_Instructor_Surname" placeholder="Instructor Surname" autocomplete="on" >
-                                    </fieldset>
-                                </div>
-
-
-
-                                <div class="col-lg-6">
-                                    <fieldset>
-                                        <input type="text"  asp-for="Dojo_Instructor" id="name" value="@Model.Dojo_Instructor" placeholder="Head Instructor Name" autocomplete="on" >
-                                    </fieldset>
-                                </div>
-                                <div class="col-lg-6">
-                                    <fieldset>
-                                        <input type="text"  asp-for="Dojo_Instructor_Email" value="@Model.Dojo_Instructor_Email" id="name" placeholder="Head Instructor Email" autocomplete="on" >
+                                        <input type="text" asp-for="Dojo_Instructor_Surname" value="@Model.Dojo_Instructor_Surname" placeholder="Instructor Surname" autocomplete="on">
                                     </fieldset>
                                 </div>
 
@@ -197,21 +184,34 @@
 
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="text" asp-for="Dojo_Instructor_Position"  value="@Model.Dojo_Instructor_Position" id="name" placeholder="Head Instructor Position" autocomplete="on" >
+                                        <input type="text" asp-for="Dojo_Instructor" id="name" value="@Model.Dojo_Instructor" placeholder="Head Instructor Name" autocomplete="on">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input type="text" asp-for="Dojo_Instructor_Email" value="@Model.Dojo_Instructor_Email" id="name" placeholder="Head Instructor Email" autocomplete="on">
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input type="text" asp-for="Dojo_Instructor_Position" value="@Model.Dojo_Instructor_Position" id="name" placeholder="Head Instructor Position" autocomplete="on">
                                     </fieldset>
                                 </div>
 
 
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input type="text" asp-for="Dojo_Instructor_Number"  value="@Model.Dojo_Instructor_Number" id="name" placeholder="Head Instructor Number" autocomplete="on">
+                                        <input type="text" asp-for="Dojo_Instructor_Number" value="@Model.Dojo_Instructor_Number" id="name" placeholder="Head Instructor Number" autocomplete="on">
                                     </fieldset>
                                 </div>
 
 
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="text" asp-for="location"  value="@Model.location" id="surname" placeholder="Dojo Location" autocomplete="on" >
+                                        <input type="text" asp-for="location" value="@Model.location" id="surname" placeholder="Dojo Location" autocomplete="on">
                                     </fieldset>
                                 </div>
 
@@ -223,7 +223,7 @@
 
                                     </div>
                                     <fieldset>
-                                        <textarea type="text" class="form-control" asp-for="Dojo_Instructor_Description" id="Dbrief" placeholder="Instructors Short description" >@Model.Dojo_Instructor_Description</textarea>
+                                        <textarea type="text" class="form-control" asp-for="Dojo_Instructor_Description" id="Dbrief" placeholder="Instructors Short description">@Model.Dojo_Instructor_Description</textarea>
                                     </fieldset>
                                 </div>
 
@@ -237,10 +237,10 @@
 
                                     </div>
                                     <fieldset>
-                                        <textarea  type="text" class="form-control" asp-for="Dojo_Description" id="message" placeholder="Dojo description" >@Model.Dojo_Description</textarea>
+                                        <textarea type="text" class="form-control" asp-for="Dojo_Description" id="message" placeholder="Dojo description">@Model.Dojo_Description</textarea>
                                     </fieldset>
                                 </div>
-           
+
 
                                 <div class="col-lg-12">
 
@@ -250,10 +250,10 @@
                                     </div>
 
                                     <fieldset>
-                                        <textarea  type="text" class="form-control" id="message" asp-for="Regulation" placeholder="Dojo rules and regulation" >@Model.Regulation</textarea>
+                                        <textarea type="text" class="form-control" id="message" asp-for="Regulation" placeholder="Dojo rules and regulation">@Model.Regulation</textarea>
                                     </fieldset>
                                 </div>
-                       
+
                                 <div class="col-lg-12">
 
                                     <div class="section-heading" style="margin: 0;">
@@ -262,13 +262,13 @@
                                     </div>
 
                                     <fieldset>
-                                        <textarea  type="text" class="form-control" id="message" asp-for="Dojo_Time" placeholder="Dojo Schedule" >can</textarea>
+                                        <textarea type="text" class="form-control" id="message" asp-for="Dojo_Time" placeholder="Dojo Schedule">can</textarea>
                                     </fieldset>
                                 </div>
-                             
+
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <button type="submit" id="form-submit" class="main-button ">Save Form</button>
+                                        <button type="submit" id="form-submit" class="main-button ">Accept and Save</button>
                                     </fieldset>
                                 </div>
 
@@ -276,25 +276,10 @@
                         </div>
 
                     </div>
-                    
-                
-                    </form>
-            </div>
 
-            @if(Model.IsNew == "false")
-            {
 
-            <div class="col-lg-12">
-                <form>
-                    <input type="text" value="@Model.ID" hidden/>
-
-                    <button class="btn btn-danger" >
-                        Delete
-                    </button>
                 </form>
             </div>
-            }
         </div>
     </div>
 </div>
-
