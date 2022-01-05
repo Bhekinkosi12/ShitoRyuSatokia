@@ -38,8 +38,12 @@ namespace ShitoRyuSatokia.Controllers
         {
             return View();
         }
-        public IActionResult Galary()
+        public async Task<ActionResult> Galary()
         {
+            UserDatabase userDatabase = new UserDatabase();
+            UserStorage userStorage = new UserStorage();
+            ViewBag.Listing = await userDatabase.GetAllImages();
+
             return View();
         }
 

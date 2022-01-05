@@ -4,7 +4,7 @@
 @{
 }
 
-
+@model ShitoRyuSatokia.Models.MicroModel.Images 
 
 
 
@@ -13,34 +13,14 @@
 
 
 <div class="gallery"  id="gallery">
+    
+    @foreach(var i in ViewBag.Listing)
+    {
+
     <div class="gallery-item">
-        <div class="content"><img src="~/images/group1.jpg" alt=""></div>
+        <div class="content"><img src="@i.URL" alt=""></div>
     </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group2.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group3.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group4.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group5.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group1.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group2.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group3.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group4.jpg" alt=""></div>
-    </div>
-    <div class="gallery-item">
-        <div class="content"><img src="~/images/group5.jpg" alt=""></div>
-    </div>
+    }
+
+ 
 </div>

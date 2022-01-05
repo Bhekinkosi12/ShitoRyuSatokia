@@ -223,6 +223,70 @@ namespace ShitoRyuSatokia.Services
         }
 
 
+        public async Task<bool> AddImages(Images img)
+        {
+            try
+            {
+                await client.Child("Images").PostAsync(img);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        } 
+
+
+
+
+        /// <summary>
+        /// Returns Images or null
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Images>> GetAllImages()
+        {
+            List<Images> images = new List<Images>();
+
+            try
+            {
+                var items = (await client.Child("Images").OnceAsync<Images>()).ToList();
+                foreach(var i in items)
+                {
+                    images.Add(i.Object);
+                }
+
+                return images;
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Delete Item by ID
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteImages(Images img)
+        {
+            try
+            {
+                var item = (await client.Child("Images").OnceAsync<Images>()).Where(x => x.Object.ID == img.ID).FirstOrDefault();
+
+                await client.Child("Images").Child(item.Key).DeleteAsync();
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
 
 

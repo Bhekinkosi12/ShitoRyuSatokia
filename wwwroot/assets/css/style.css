@@ -8517,14 +8517,14 @@ h1, h2, h3, h4, h5,
 
     .C-Cover{
         
-        height: 90vh;
+        height: auto;
         display: inline-flex;
         justify-content: space-around;
         justify-items: center;
     }
     .C-Cover img{
         height: 100%;
-        width: auto;
+        width: 100%;
     }
 
     .center{

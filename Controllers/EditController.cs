@@ -52,7 +52,10 @@ namespace ShitoRyuSatokia.Controllers
         {
             return View();
         }
-
+        public IActionResult Imageview()
+        {
+            return View();
+        }
         public IActionResult Requestview(string Newsid)
         {
             return View();
@@ -347,12 +350,62 @@ namespace ShitoRyuSatokia.Controllers
                 // postViewModel.UpDateNews(news);
 
                 await userDatabase.UpdateNews(_news);
+                
 
             }
 
 
             return RedirectToAction("Index","Edit");
 
+        }
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> AddImage(List<IFormFile> formFile)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+            UserStorage userStorage = new UserStorage();
+
+
+            foreach(var i in formFile)
+            {
+                Images images = new Images();
+
+
+                var im =  i.OpenReadStream();
+
+                try
+                {
+
+                    var link =  await userStorage.AddStoreStream(Guid.NewGuid().ToString(), im);
+                    
+                    if(link != "")
+                    {
+                        images.ID = Guid.NewGuid().ToString();
+                        images.URL = link;
+
+                        await userDatabase.AddImages(images);
+
+                    }
+                    else
+                    {
+
+                    }
+                
+                }
+                catch
+                {
+
+                }
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+            }
+
+
+            return View("Index");
         }
 
     }
