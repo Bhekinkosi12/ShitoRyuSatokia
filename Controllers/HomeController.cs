@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ShitoRyuSatokia.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace ShitoRyuSatokia.Controllers
 
             ViewBag.DojoListing = list;
             ViewBag.NewsListing = listN;
+           
             
             return View(viewModel);
         }
@@ -38,13 +40,26 @@ namespace ShitoRyuSatokia.Controllers
         {
             return View();
         }
-        public async Task<ActionResult> Galary()
+        public async Task<ActionResult> Gallery()
         {
             UserDatabase userDatabase = new UserDatabase();
             UserStorage userStorage = new UserStorage();
-            ViewBag.Listing = await userDatabase.GetAllImages();
+             var ite = await userDatabase.GetAllImages();
 
-            return View();
+            ViewBag.Listing = ite;
+
+            ViewBag.Close = "none";
+            ImageList imageList = new ImageList()
+            {
+                ImageListing = ite,
+                 SelecetedImage = new Images() {  URL = ""}
+            };
+            Images img = new Images()
+            {
+                ID = "",
+                URL = ""
+            };
+            return View(imageList);
         }
 
         public async Task<ActionResult> Intro()
@@ -60,6 +75,7 @@ namespace ShitoRyuSatokia.Controllers
             ViewBag.DojoListing = list;
             ViewBag.NewsListing = listN;
 
+            
 
             return View(viewModel);
         } 
@@ -68,6 +84,13 @@ namespace ShitoRyuSatokia.Controllers
             AdminViewModel viewModel = new AdminViewModel();
             return View();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> ToGallery()
+        {
+            return View("Gallery");
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> SelectNews(string newsid)
@@ -96,6 +119,70 @@ namespace ShitoRyuSatokia.Controllers
 
             return View("Image",viewModel);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> OnOpenPop(string id)
+        {
+            ViewBag.Close = "initial";
+            ViewBag.Img = id;
+
+            Images img = new Images()
+            {
+                 ID = "",
+                  URL = id
+            };
+
+
+
+
+            UserDatabase userDatabase = new UserDatabase();
+            UserStorage userStorage = new UserStorage();
+            var ite = await userDatabase.GetAllImages();
+
+            ImageList imageList = new ImageList()
+            {
+                ImageListing = ite,
+                SelecetedImage = new Images() { URL = id }
+            };
+
+
+
+
+
+            return View("Gallery",imageList);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> OnClosePop()
+        {
+            ViewBag.Close = "none";
+
+            Images img = new Images()
+            {
+                ID = "",
+                URL = ""
+            };
+
+
+
+            UserDatabase userDatabase = new UserDatabase();
+            UserStorage userStorage = new UserStorage();
+            var ite = await userDatabase.GetAllImages();
+
+            ViewBag.Listing = ite;
+
+            ViewBag.Close = "none";
+            ImageList imageList = new ImageList()
+            {
+                ImageListing = ite,
+                SelecetedImage = new Images() { URL = "" }
+            };
+
+
+            return View("Gallery",imageList);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

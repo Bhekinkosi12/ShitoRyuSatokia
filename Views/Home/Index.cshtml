@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a asp-area="" asp-controller="Admin" asp-action="Index" class="logo">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">
                             <img src="~/drawables/redlogo.png" style="width: 4em; height: 4.6em; margin-top: 5px;" />
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -514,7 +514,7 @@
                     <h2 class="heading-section mb-5">Officials Team</h2>
                 </div>
                 <div class="col-md-12">
-                    <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                    <div class="featured-carousel owl-carousel  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
                         @foreach (var i in ViewBag.DojoListing)
                         {
 
@@ -612,16 +612,23 @@
     <div id="portfolio" class="our-portfolio section">
         <div class="container">
             <div class="row">
+               
+
                 <div class="col-lg-5">
                     <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                         <h6>Our Portofolio</h6>
                         <h2>Discover Our Recent <em>Events</em> And <span>Showcases</span></h2>
+                        <a asp-controller="Home" asp-action="Gallery" class="btn btn-outline-success">Show All</a>
                     </div>
                 </div>
+               
+               
             </div>
         </div>
         <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
             <div class="row">
+                
+
                 <div class="col-lg-12">
                     <div class="loop owl-carousel">
                         <div class="item">
@@ -779,13 +786,13 @@
                                             <div class="icon">
                                                 <img src="assets/images/contact-icon-01.png" alt="email icon">
                                             </div>
-                                            <a href="#">satokaisahq@gmail.com</a>
+                                            <a href="mailto: info@ShitorySouthAfrica.com">info@ShitorySouthAfrica.com</a>
                                         </li>
                                         <li>
                                             <div class="icon">
                                                 <img src="assets/images/contact-icon-02.png" alt="phone">
                                             </div>
-                                            <a href="#">+27842149489</a>
+                                            <a href="tel:27842149489">+27842149489</a>
                                         </li>
                                         <li>
                                             <div class="icon">
@@ -798,7 +805,7 @@
                                             <div class="icon">
                                                 <img src="assets/images/facebook.png" alt="facebook">
                                             </div>
-                                            <a href="#">Visit</a>
+                                            <a href="https://web.facebook.com/Shitoryu-Satokai-South-Africa-104772792097517">Visit</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+
+    string close = "initial";
+    if (Model.SelecetedImage.URL == "")
+    {
+        close = "none";
+
+    }
+
+}
+
+
+
+
+
+
+
+
+<div class="gallery" id="gallery">
+    <!--
+    foreach(var i in Model.ImageListing)
+    {
+
+     <form class="form" asp-controller="Home" asp-action="OnOpenPop" method="post">
+         -->
+    <input hidden value="" type="text" name="id" />
+    <button type="submit">
+        <div class="gallery-item">
+            <div class="content"><img src="~/images/group2.jpg" alt=""></div>
+        </div>
+    </button>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!---
+
+<div class="gallery-pop" id="gallerypop" style="display: ViewBag.Close" >
+    <form asp-controller="Home" asp-action="OnClosePop" method="post">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 color-white">
+                <button class="btn btn-close color-white" type="submit"   id="popclose" >X</button>
+            </div>
+
+            <div class="col-12 item-pop">
+                <img id="selectedImage" src="Model.SelecetedImage.URL" />
+            </div>
+
+
+        </div>
+
+
+    </div>
+    </form>
+
+</div>
+
+
+-->

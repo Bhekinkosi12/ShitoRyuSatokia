@@ -21,6 +21,7 @@ namespace ShitoRyuSatokia.Models
         public AdminViewModel(bool IsFirstRoute = true)
         {
             onDemoData();
+            
 
             if (!IsFirstRoute)
             {
@@ -206,9 +207,10 @@ namespace ShitoRyuSatokia.Models
                 new News
                 {
                      Id = "awe",
-                      Brief = "Shito kai South Africa students were grading and changing their rankings.",
-                       Description = "In November 2021 the head of shito ryu satoha  ",
-                        Cover_Image = "../images/off1.png",
+                     Date = new DateTime(2021,09,26),
+                      Brief = "Shitoryu Satokai South Africa hosting a grading session",
+                       Description = "In September 2021 Shitoryu Satokai South Africa Satoha Shitoryu International Federation Hosted het another grgading session for all registered students within the federation. \n\n The head coach was proud to announce the results of how the hard working students performed within the grading process. \n\n New students have joined the federation said head coach Shihan Sydney, 'New dojos have joined us from within the country Africa'. Students were taught at their arrival the skills required to win.    ",
+                        Cover_Image = "../images/news1.jpg",
                          EventImages = new List<IMG>()
                          {
                               new IMG
@@ -228,7 +230,7 @@ namespace ShitoRyuSatokia.Models
                               }
                          },
 
-                          heading = "Senior Grading Section"
+                          heading = "Grading Session"
                 },
 
                  new News

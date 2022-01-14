@@ -8283,6 +8283,15 @@ h1, h2, h3, h4, h5,
 
 
 
+ .Tcarousel{
+     display: flex;
+
+ } 
+ .Tcarousel .item{
+     width: 350px;
+ }
+
+
 
 
 
@@ -8701,7 +8710,9 @@ h1, h2, h3, h4, h5,
     grid-column-gap: 8px;
     grid-row-gap: 8px;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: 8px;
+    grid-auto-rows: auto;
+   
+
 
     height: 100vh;
 }
@@ -8731,6 +8742,50 @@ h1, h2, h3, h4, h5,
         .gallery .gallery-item:hover {
             transform: scale(1.025);
         }
+
+        .color-white{
+            color: white;
+        }
+
+
+        .gallery-pop{
+            background-color: rgba(0,0,0,0.6);
+            position: fixed;
+            z-index: 9890;
+            margin: 10px 20px 20px 10px;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            padding-top: 40px;
+            color: #fff;
+           
+        }
+
+        .gallery-pop button{
+            align-self: end;
+            color: #fff;
+        }
+
+
+
+
+
+       .gallery .form{
+            border: none;
+            outline: none;
+            
+            background-color: transparent;
+        }
+       .form button{
+           outline: none;
+           border: none;
+           background-color: transparent;
+       }
+
+
+
+
 
 @media (max-width: 600px) {
     .gallery {

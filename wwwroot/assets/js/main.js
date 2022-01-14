@@ -49,7 +49,7 @@ var IsPlaying = false;
 
 var BigFiveAudio = document.getElementById("b");
 
-BigFiveAudio.addEventListener("click", () => {
+BigFiveAudio.addEventListener("onclick", () => {
 
 	var music = new Audio("../audio/firstfeel.mp3");
 	if (IsPlaying) {
@@ -67,3 +67,28 @@ BigFiveAudio.addEventListener("click", () => {
 
 
 
+var galary = document.getElementsByClassName("gallery-item");
+var galaryPop = document.getElementById("gallerypop");
+var popClose = document.getElementById("popclose");
+
+
+galary.addEventListener("onclick", PopVisibility(true));
+
+popClose.addEventListener("onclick", PopVisibility(false));
+
+
+
+
+
+function PopVisibility(isvisible) {
+
+	if (isvisible == true) {
+		galaryPop.style.visibility = "visible";
+		galaryPop.style.display = "initial";
+	}
+	else {
+		galaryPop.style.visibility = "hidden";
+		galaryPop.style.display = "none";
+    }
+
+}
