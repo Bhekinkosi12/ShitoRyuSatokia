@@ -88,7 +88,21 @@ namespace ShitoRyuSatokia.Controllers
         [HttpPost]
         public async Task<ActionResult> ToGallery()
         {
-            return View("Gallery");
+            UserDatabase userDatabase = new UserDatabase();
+            UserStorage userStorage = new UserStorage();
+            var ite = await userDatabase.GetAllImages();
+
+            ImageList imageList = new ImageList()
+            {
+                ImageListing = ite,
+                SelecetedImage = new Images() { URL = "" }
+            };
+
+
+
+
+
+            return View("Gallery", imageList);
         }
 
 
@@ -119,6 +133,13 @@ namespace ShitoRyuSatokia.Controllers
 
             return View("Image",viewModel);
         }
+
+
+        public IActionResult DojoOpen()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> OnOpenPop(string id)

@@ -8769,7 +8769,9 @@ h1, h2, h3, h4, h5,
 
 
 
-
+       .p_5px{
+           padding: 5px;
+       }
 
        .gallery .form{
             border: none;
@@ -8784,13 +8786,88 @@ h1, h2, h3, h4, h5,
        }
 
 
+       
+
+       .Dojos{
+           text-align: center;
+       }
+
+       .Dojos h1{
+           margin: 0;
+           padding: 0;
+       }
+        .Dojos h2 {
+            margin: 40px 0 18px 0;
+            padding: 0;
+        }
+        .Dojos p {
+            margin: 0;
+            padding: 0;
+        }
+        .Dojos a {
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            color: #088ec3;
+        }
+        
+       .Dslideer{
+           text-align: unset;
+           display: flex;
+           overflow-x: scroll;
+           scrollbar-base-color: transparent;
+           scrollbar-track-color: transparent;
+           scrollbar-face-color: transparent;
+           scrollbar-3dlight-color: transparent;
+       }
+.Ditem {
+    width: 410px;
+    background: #efefef;
+    
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgb(255,255,255);
+    background: linear-gradient(105deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+    transition: background-color .5s;
+    -webkit-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    margin-bottom: 22px;
+}
+
+.Ditem a{
+    margin-bottom: 15px;
+}
+
+.Ditem button{
+    margin: 15px;
+}
 
 
+.DOpen{
+    text-align: center;
+}
+
+.DOpen h1{
+    margin: 30px 0px;
+}
+
+
+
+.Dcard{
+    border: 1px solid gray;
+}
 
 @media (max-width: 600px) {
     .gallery {
         grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     }
+    .Ditem{
+        width: 80vw;
+    }
+
 }
 
 @media (max-width: 400px) {

@@ -347,8 +347,65 @@
                     </div>
                     <p>The <a rel="nofollow" href="https://shitoryu.net" target="_parent">Sato Ha</a> Organisation is thrilled to announce that <a rel="nofollow" href="#sato" target="_parent">Soke Sato </a> has been recognized as an international leader in the development and promotion of the journey of karate.</p>
                     <!--    <div class="main-green-button"><a href="#">Discover company</a></div>
-                        -->
+            -->
                 </div>
+
+                <div class="container Dojos">
+
+                    <div class="row">
+
+                        <div class="col-12 ">
+                            <h1>Head Quarters</h1>
+
+                            <h3>Sydney Hoaeane</h3>
+
+                            <p> <a href="tel:+27744365134">+27 74 436 5134</a> OR <a href="tel:+27842149489">+27 84 214 9489</a></p>
+                            <a href="mailto:satokaisahq@gmail.com">satokaisahq@gmail.com</a>
+                            <a class="btn btn-outline-success" href="#showmap">Show Location</a>
+
+                        </div>
+
+                        <div class="col-12 ">
+                            <h2>Main Dojos</h2>
+                            <div class="Dslideer">
+
+                                <div class="Ditem">
+                                    <h3>Gauteng</h3>
+                                    <p>Sydney Hoaeane </p>
+                                     <p>Headquarters</p>
+                                    <a href="tel:+27744365134">+27 74 436 5134</a><br/>
+                                    <a  asp-controller="Home" asp-action="DojoOpen" class="btn btn-outline-success p_5px">Show All</a>
+                                </div>
+                                <div class="Ditem">
+                                    <h3>Northwest</h3>
+                                    <p>Aubrey Morwe</p>
+                                    <p>Mahikeng</p>
+                                    <a href="tel:+27834560156">+27 83 456 0156</a>
+                                </div>
+                                <div class="Ditem">
+                                    <h3>Mpumalanga</h3>
+                                    <p>Joseph Mthimunye</p>
+                                    <p>Funakoshi</p>
+                                    <a href="tel:+27723370220">+27 72 337 0220</a>
+                                </div>
+                                <div class="Ditem">
+                                    <h3>Free State</h3>
+                                    <p>Dextus Tumelo</p>
+                                    <p>Mmabana Thaba-nchu</p>
+                                    <a href="tel:+27787836877">+27 78 783 6877</a>
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -364,6 +421,10 @@
                 </div>
             </div>
         </div>
+
+
+      
+
 
         <!--
         <div class="row">
@@ -613,15 +674,15 @@
         <div class="container">
             <div class="row">
                
-
+                <form asp-controller="Home" asp-action="ToGallery" method="post">
                 <div class="col-lg-5">
                     <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                         <h6>Our Portofolio</h6>
                         <h2>Discover Our Recent <em>Events</em> And <span>Showcases</span></h2>
-                        <a asp-controller="Home" asp-action="Gallery" class="btn btn-outline-success">Show All</a>
+                        <button type="submit" class="btn btn-outline-success">Show All</button>
                     </div>
                 </div>
-               
+               </form>
                
             </div>
         </div>
@@ -725,9 +786,25 @@
                 </div>
             </div>
         </div>
+
+
+      
+
     </div>
 
 
+    <div class="container Map" id="showmap">
+        <div class="row">
+           <div class="col-lg-12">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d447.3519408845428!2d27.92362!3d-26.2351829!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95a757f623bb13%3A0xf1c04bea75841e86!2sOrlando%20East%20Communal%20Hall%2C%20Sports%20%26%20Recreation!5e0!3m2!1sen!2sza!4v1642465514942!5m2!1sen!2sza" style="border:0; width: 100%; height: 80vh;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           </div>
+
+
+
+        </div>
+
+
+    </div>
 
 
 
@@ -736,6 +813,8 @@
     <div id="contact" class="contact-us section">
         <div class="container">
             <div class="row">
+
+
                 <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
                     <form id="contact" action="" method="post">
                         <div class="row">
