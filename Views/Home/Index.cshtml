@@ -40,7 +40,12 @@
 
 
 
+    <a asp-controller="Home" asp-action="Notification">
 
+    <div class="popPop wow bounceIn" id="top" data-wow-duration="2s" data-wow-delay="2.5s" >
+        <img src="~/drawables/notification.png" width="50" heigth="50" />
+    </div>
+    </a>
 
 
 
@@ -92,7 +97,7 @@
             </div>
         </div>
         
-        <div class="back_decor wow flipInX" id="bigFive" data-wow-duration="2s" data-wow-delay="0.5s">
+        <div class="back_decor wow fadeIn" id="bigFive" data-wow-duration="2s" data-wow-delay="0.5s">
             <img src="~/images/bigFives.jpg"  />
         </div>
        
@@ -360,7 +365,7 @@
                             <h3>Sydney Hoaeane</h3>
 
                             <p> <a href="tel:+27744365134">+27 74 436 5134</a> OR <a href="tel:+27842149489">+27 84 214 9489</a></p>
-                            <a href="mailto:satokaisahq@gmail.com">satokaisahq@gmail.com</a>
+                            <a href="mailto:satokaisahq@gmail.com">satokaisahq@gmail.com</a> <br />
                             <a class="btn btn-outline-success" href="#showmap">Show Location</a>
 
                         </div>
@@ -833,7 +838,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                            <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
+                                            <input type="text" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">
@@ -843,7 +848,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                            <input type="subject" name="subject" id="subject" placeholder="Subject" autocomplete="on">
+                                            <input type="text" name="subject" id="subject" placeholder="Subject" autocomplete="on">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
@@ -880,12 +885,7 @@
                                             <a href="#">Soweto</a>
                                         </li>
 
-                                        <li>
-                                            <div class="icon">
-                                                <img src="assets/images/facebook.png" alt="facebook">
-                                            </div>
-                                            <a href="https://web.facebook.com/Shitoryu-Satokai-South-Africa-104772792097517">Visit</a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -897,3 +897,10 @@
     </div>
 
 
+     <div class="footer">
+    <ul class="social-network social-circle">
+      <li><a class="icoTwitter" href="https://twitter.com/HoeaneSydney" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a class="icoFacebook" href="https://web.facebook.com/Shitoryu-Satokai-South-Africa-104772792097517" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a class="icoInstagram" href="https://www.instagram.com/satokai_sa" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+  </div>

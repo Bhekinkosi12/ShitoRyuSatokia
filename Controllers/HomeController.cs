@@ -140,6 +140,11 @@ namespace ShitoRyuSatokia.Controllers
             return View();
         }
 
+        public IActionResult Notification()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> OnOpenPop(string id)
