@@ -4,8 +4,6 @@
 @{
 }
 
-
-
 <style>
 
     .wrapper {
@@ -224,53 +222,54 @@ input[type=text]:placeholder {
 
 </style>
 
-
-
-
-<div class="wrapper fadeInDown"   >
-  <div class="notify" style="padding: 30px;" id="formContent">
+@if(ViewBag.Com == "true"){
+     
+<div class="wrapper fadeInDown" id="loginn">
+  <div id="formContent">
     <!-- Tabs Titles -->
     
+    
     <!-- Icon -->
-
-    <h1>Greetings</h1>
-
-    <p>
-        Happy new year to all. The new year has began new strategy has to be discuss going forward like any other organisation we learned from the mistakes, the pasts and we have to apply new strategy for the future going forward. 
-        <br />
-        After engagement with senior instructors the 25th of February 2022 was found to be a suitable date to host a compulsory Gashku for brown and black belts in preparation for dan gradings at R200.00 per attendee including  instructors and to host a compulsory  meeting for all instructors, black belts including  brown belts, satokai passbook will be needed to attend,  Satokai  formal attire dressing is compulsory    which is black Satokai tie, white shirt, black jacket with Satokai badge, grey pants, black socks and black shoes to attend them meeting  clean and shaved face, if one is short of any Satokai attire make an order and payment in the Satokai bank account and it will be received on the of meeting, even for any other material  need such as  gi badges, kyu grading certificates, style passbook, dojo kun, business cards, jodo badges, flyers and etc.
-        <br />
-<strong>NB</strong> that dojo instructors are required to send the list of names and grades of attendees. Note well compulsory gashku it's a gate way to pre trial dan/black belt gradings no attendance, no passbook, no grading.
-
-<br />
-<br />
-Regards 
-
-    </p>
-    <br/>
-    <a href="https://web.facebook.com/Shitoryu-Satokai-South-Africa-104772792097517">
-        <img src="~/drawables/facebook.png" height="50" width="50" />
-    </a>
-    <a href="https://twitter.com/HoeaneSydney">
-        <img src="~/drawables/twitter.png" height="50" width="50" />
-    </a>
-
-    <a href="https://www.instagram.com/satokai_sa">
-        <img src="~/drawables/instagram.png" height="45" width="45" />
-    </a>
+   
+    <img src="~/drawables/email.gif" alt="">
+    <!-- Login Form -->
+    
 
     <!-- Remind Passowrd -->
+   
+     
+
     <div id="formFooter">
-      <a class="underlineHover" asp-controller="Home" asp-action="Index">Done</a>
+      <a class="underlineHover" asp-controller="Home" asp-Action="Index">Done</a> <br />
+       
     </div>
+    
 
   </div>
-</div>
+        </div>
+}
+else
+{
+    
+<div class="wrapper fadeInDown" id="loginn">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Subscribe </h2>
+    
+    <!-- Icon -->
+   
 
+    <!-- Login Form -->
+    <form asp-controller="Home" asp-action="OnSubscribe" method="post">
+      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
+      <input type="text" id="password" class="fadeIn third" name="name" placeholder="Prefered Name">
+      <input type="submit" class="fadeIn fourth" value="Submit">
+    </form>
 
-    <a asp-controller="Home" asp-action="Subscribe">
+    <!-- Remind Passowrd -->
+   
+     
 
-    <div class="popPops wow bounceIn" id="top" data-wow-duration="2s" data-wow-delay="2.5s" >
-        <button class="btn btn-success" >Get Updates</button>
-    </div>
-    </a>
+  </div>
+        </div>
+}

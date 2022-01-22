@@ -21,6 +21,29 @@ namespace ShitoRyuSatokia.Services
         }
 
 
+        public async Task AddSubsribe(Notication noty)
+        {
+            await client.Child("Subscript").PostAsync(noty);
+        }
+        public async Task<List<Notication>> GetNotications()
+        {
+            List<Notication> notications = new List<Notication>();
+
+            var list = (await client.Child("Subscript").OnceAsync<Notication>()).ToList();
+            foreach(var i in list)
+            {
+                notications.Add(i.Object);
+            }
+
+            return notications;
+
+        }
+        public async Task DeleteSubscribe(Notication noty)
+        {
+            var a = (await client.Child("Subscript").OnceAsync<Notication>()).Where(x => x.Object.Email == noty.Email).FirstOrDefault();
+            await client.Child(a.Key).DeleteAsync();
+        }
+
 
         public async Task<bool> AddRequest(Dojo dojo)
         {

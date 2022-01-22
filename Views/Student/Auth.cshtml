@@ -232,17 +232,20 @@ input[type=text]:placeholder {
 
 @if(ViewBag.Auth == "login" ){
 
-<div class="wrapper fadeInDown" id="loginn">
+    if(ViewBag.Type == "instructor")
+    {
+        
+    <div class="wrapper fadeInDown" id="loginn">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Sign In </h2>
+    <h2 class="active"> Login </h2>
     
     <!-- Icon -->
    
 
     <!-- Login Form -->
     <form >
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
@@ -259,11 +262,43 @@ input[type=text]:placeholder {
      
 
   </div>
-</div>
+        </div>
+    }
+    else if(ViewBag.Type == "student")
+    {
+   <div class="wrapper fadeInDown" id="loginn">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Login </h2>
+    
+    <!-- Icon -->
+   
+
+    <!-- Login Form -->
+    <form >
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Number">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Dojo Code">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <form asp-controller="Student" asp-action="ToSignin" method="Post">
+
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a> <br />
+       <button type="submit" class="underlineHover btn btn-outline-success" href="#" id="createACC">Create Account!</button>
+    </div>
+    </form>
+
+     
+
+  </div>
+        </div>
+    }
 }
-else
+else if(ViewBag.Auth == "signin")
 {
-<div class="wrapper fadeInDown"   id="signinn">
+<div class="wrapper fadeInDown" id="signinn">
   <div id="formContent">
     <!-- Tabs Titles -->
     <h2 class="active"> Sign In </h2>
@@ -276,19 +311,44 @@ else
 
     <!-- Login Form -->
     <form >
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Number">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Dojo Name">
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Sign Up">
+    </form>
+
+    <!-- Remind Passowrd -->
+  
+
+  </div>
+    </div>
+
+}
+else if(ViewBag.Auth == "student")
+{
+    <div class="wrapper fadeInDown"   id="signinn">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Student Sign up </h2>
+    
+
+    <!-- Icon -->
+   
+
+    <!-- Login Form -->
+    <form >
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Number">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Dojo Code">
+      
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
     <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-
+    
   </div>
-</div>
-
+    </div>
 }
 
 

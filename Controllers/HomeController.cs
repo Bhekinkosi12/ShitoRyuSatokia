@@ -139,10 +139,36 @@ namespace ShitoRyuSatokia.Controllers
         {
             return View();
         }
+        public IActionResult Subscribe()
+        {
+            ViewBag.Com = "false";
+            return View();
+        }
 
         public IActionResult Notification()
         {
             return View();
+        }
+
+        
+        
+
+        [HttpPost]
+        public async Task<ActionResult> OnSubscribe(string email,string name)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+
+            Notication notication = new Notication()
+            {
+                 Id = Guid.NewGuid().ToString(),
+                  Email = email,    
+                  Name = name
+            };
+
+            await userDatabase.AddSubsribe(notication);
+
+            ViewBag.Com = "true";
+            return View("Subscribe");
         }
 
 

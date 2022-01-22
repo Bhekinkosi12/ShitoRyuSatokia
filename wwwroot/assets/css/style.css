@@ -8808,6 +8808,14 @@ h1, h2, h3, h4, h5,
            height: 50px;
        }
 
+.popPops {
+    z-index: 60000;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+   
+}
+
 
        .Dojos{
            text-align: center;
@@ -8842,7 +8850,7 @@ h1, h2, h3, h4, h5,
            scrollbar-3dlight-color: transparent;
        }
 .Ditem {
-    width: 410px;
+    
     background: #efefef;
     
     margin-left: 10px;

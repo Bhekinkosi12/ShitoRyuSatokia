@@ -2,11 +2,12 @@
 {
     public class Student
     {
-        public string Id { get; set; }  
+        public string Id { get; set; }
+        public string Images { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Number { get; set; }
-        public string Provice { get; set; }
-        public string Passwowrd { get; set; }
+        public string DojoCode { get; set; }
+        
     }
 }
