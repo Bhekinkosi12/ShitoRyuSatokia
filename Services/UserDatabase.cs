@@ -20,6 +20,7 @@ namespace ShitoRyuSatokia.Services
             client = new FirebaseClient("https://shitoryukarate-ea3d5-default-rtdb.firebaseio.com/");
         }
 
+        
 
         public async Task AddSubsribe(Notication noty)
         {
