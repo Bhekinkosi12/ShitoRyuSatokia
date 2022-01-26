@@ -20,7 +20,55 @@ namespace ShitoRyuSatokia.Services
             client = new FirebaseClient("https://shitoryukarate-ea3d5-default-rtdb.firebaseio.com/");
         }
 
+        public async Task AddNoti(Notify notify)
+        {
+            await client.Child("Notify").PostAsync(notify);
+        }
+        public async Task DeleteNoti(Notify notify)
+        {
+            var a = (await client.Child("Notify").OnceAsync<Notify>()).Where(x => x.Object.ID == notify.ID).FirstOrDefault();
+
+            await client.Child(a.Key).DeleteAsync();
+        }
+        public async Task<List<Notify>> GetNoti()
+        {
+            List<Notify> notifies = new List<Notify>();
+
+            var a = (await client.Child("Notify").OnceAsync<Notify>());
+
+            foreach(var i in a)
+            {
+                notifies.Add(i.Object);
+            }
+
+            return notifies;
+
+        }
         
+        public async Task AddText(TouchText tex)
+        {
+            await client.Child("Text").PostAsync(tex);
+        }
+        public async Task DeleteText(TouchText text)
+        {
+            var it = (await client.Child("Text").OnceAsync<TouchText>()).Where(x => x.Object.ID == text.ID).FirstOrDefault();
+
+            await client.Child(it.Key).DeleteAsync();
+
+        }
+        public async Task<List<TouchText>> GetAllText()
+        {
+            List<TouchText> touches = new List<TouchText>();
+            var list = (await client.Child("Text").OnceAsync<TouchText>()).ToList();
+
+            foreach(var i in list)
+            {
+                touches.Add(i.Object);
+            }
+
+            return touches;
+
+        }
 
         public async Task AddSubsribe(Notication noty)
         {

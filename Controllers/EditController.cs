@@ -43,6 +43,28 @@ namespace ShitoRyuSatokia.Controllers
 
         }
 
+        public async Task<ActionResult> OnAddNoti(Notify notify)
+        {
+            UserDatabase userDatabase = new UserDatabase();
+
+            
+
+            try
+            {
+
+           await userDatabase.AddNoti(notify);
+
+                return View("Edit");
+            }
+            catch
+            {
+                return View("AddNoti",notify);
+            }
+
+
+            
+        }
+
         public IActionResult Dojoview(string DojoName)
         {
             AdminViewModel adminView = new AdminViewModel(DojoName);
@@ -67,12 +89,12 @@ namespace ShitoRyuSatokia.Controllers
             UserDatabase userDatabase = new UserDatabase();
             Dojo _dojo = new Dojo();
             var list = await userDatabase.GetAllDojos();
-
             foreach(var i in list)
             {
                 if(i.ID == DojoName)
                 {
                     _dojo = i;
+                   await userDatabase.DeleteDojo(i);
                 }
             }
 
@@ -83,8 +105,19 @@ namespace ShitoRyuSatokia.Controllers
 
             _dojo.IsNew = "false";
 
+            AdminViewModel adminViewModel = new AdminViewModel();
+            
+            UserAuthService userAuth = new UserAuthService();
+            var _item = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
 
-            return View("Dojoview",_dojo);
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = _item;
+            ViewBag.Modeles = items;
+
+
+            return View("Index");
         }
 
 
@@ -184,15 +217,47 @@ namespace ShitoRyuSatokia.Controllers
                 if(i.Id == Newsid)
                 {
                     news = i;
+                    await userDatabase.DeleteNews(i);
                 }
             }
 
             var item = adminView.ReturnNews();
 
             news.IsNew = "false";
+            var _item = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
+            var ity = await userDatabase.GetAllText();
 
-            return View("Newsview", news);
+            ViewBag.Masg = ity;
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = _item;
+            ViewBag.Modeles = items;
+
+
+            return View("Index");
         }
+
+        [HttpPost]
+        public async Task<ActionResult> OnDeleteMSG(string id)
+        {
+
+            UserDatabase userDatabase = new UserDatabase();
+
+            var ity = await userDatabase.GetAllText();
+
+            foreach(var i in ity)
+            {
+                if(i.ID == id)
+                {
+                   await userDatabase.DeleteText(i);
+                }
+            }
+
+
+            return View("Index");
+        }
+
 
 
         [HttpPost]
@@ -219,6 +284,10 @@ namespace ShitoRyuSatokia.Controllers
 
 
 
+        public IActionResult AddNoti()
+        {
+            return View();
+        }
 
 
 

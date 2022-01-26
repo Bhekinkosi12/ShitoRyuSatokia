@@ -150,8 +150,38 @@ namespace ShitoRyuSatokia.Controllers
             return View();
         }
 
-        
-        
+        public IActionResult Notifications()
+        {
+            return View();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="massage"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> OnMsg(string name,string email,string massage)
+        {
+            TouchText touchText = new TouchText()
+            {
+                Name = name,
+                Email = email,
+                Massage = massage,
+                ID = Guid.NewGuid().ToString()
+
+            };
+            UserDatabase userDatabase = new UserDatabase();
+
+           await userDatabase.AddText(touchText);
+
+            ViewBag.Com = "true";
+            return View("Subscribe");
+        }
 
         [HttpPost]
         public async Task<ActionResult> OnSubscribe(string email,string name)
