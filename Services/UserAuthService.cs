@@ -85,6 +85,22 @@ namespace ShitoRyuSatokia.Services
         }
 
 
+        public async Task<bool> ResetPass(string email)
+        {
+            try
+            {
+                var authProvider = new FirebaseAuthProvider(new FirebaseConfig(APIKEY));
+
+               await authProvider.SendPasswordResetEmailAsync(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
 
 
 

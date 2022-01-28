@@ -25,12 +25,15 @@ namespace ShitoRyuSatokia.Controllers
            var item = await userDatabase.GetAllDojos();
             var items = await userDatabase.GetAllNews();
             var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
 
             ViewBag.Modelas = iteme;
             ViewBag.Models = item;
             ViewBag.Modeles = items;
-
-
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
+            
             if (userAuth.IsAuth())
             {
 
@@ -40,19 +43,25 @@ namespace ShitoRyuSatokia.Controllers
             {
                 return RedirectToAction("Index", "Admin");
             }
-
+            
+            
         }
 
         public async Task<ActionResult> OnAddNoti(Notify notify)
         {
             UserDatabase userDatabase = new UserDatabase();
 
-            
+            Notify notify1 = new Notify()
+            {
+                 ID = notify.ID,
+                  Massege = notify.Massege,
+                   Date = DateTime.Now
+            };
 
             try
             {
 
-           await userDatabase.AddNoti(notify);
+           await userDatabase.AddNoti(notify1);
 
                 return View("Edit");
             }
@@ -106,15 +115,20 @@ namespace ShitoRyuSatokia.Controllers
             _dojo.IsNew = "false";
 
             AdminViewModel adminViewModel = new AdminViewModel();
-            
+
+           
             UserAuthService userAuth = new UserAuthService();
-            var _item = await userDatabase.GetAllDojos();
+            var item_ = await userDatabase.GetAllDojos();
             var items = await userDatabase.GetAllNews();
             var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
 
             ViewBag.Modelas = iteme;
-            ViewBag.Models = _item;
+            ViewBag.Models = item_;
             ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
 
 
             return View("Index");
@@ -154,7 +168,21 @@ namespace ShitoRyuSatokia.Controllers
             UserDatabase userDatabase = new UserDatabase();
 
             await userDatabase.AddDojoAsync(dojo);
-            
+
+
+
+            UserAuthService userAuth = new UserAuthService();
+            var item_ = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
+
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = item_;
+            ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
 
             return View("Index");
         }
@@ -170,6 +198,19 @@ namespace ShitoRyuSatokia.Controllers
             };
 
             await userDatabase.DeleteDojo(dojo);
+
+            var item_ = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
+
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = item_;
+            ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
+
 
             return View("Index");
         }
@@ -224,15 +265,21 @@ namespace ShitoRyuSatokia.Controllers
             var item = adminView.ReturnNews();
 
             news.IsNew = "false";
-            var _item = await userDatabase.GetAllDojos();
+            var item_ = await userDatabase.GetAllDojos();
             var items = await userDatabase.GetAllNews();
             var iteme = await userDatabase.GetDojoRequest();
-            var ity = await userDatabase.GetAllText();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
 
-            ViewBag.Masg = ity;
             ViewBag.Modelas = iteme;
-            ViewBag.Models = _item;
+            ViewBag.Models = item_;
             ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
+
+
+
+
 
 
             return View("Index");
@@ -253,6 +300,20 @@ namespace ShitoRyuSatokia.Controllers
                    await userDatabase.DeleteText(i);
                 }
             }
+
+
+            var item_ = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
+
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = item_;
+            ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
+
 
 
             return View("Index");
@@ -473,6 +534,19 @@ namespace ShitoRyuSatokia.Controllers
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
             }
 
+
+
+            var item_ = await userDatabase.GetAllDojos();
+            var items = await userDatabase.GetAllNews();
+            var iteme = await userDatabase.GetDojoRequest();
+            var msg = await userDatabase.GetNoti();
+            var sub = await userDatabase.GetNotications();
+
+            ViewBag.Modelas = iteme;
+            ViewBag.Models = item_;
+            ViewBag.Modeles = items;
+            ViewBag.Masg = msg;
+            ViewBag.Sub = sub;
 
             return View("Index");
         }

@@ -248,3 +248,79 @@
         </div>
     </div>
 </section>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center wow fadeInDown" data-wow-duration="0.7s" data-wow-delay="0.1s">
+                <h2 class="heading-section mb-5">Notifications</h2>
+            </div>
+
+           
+
+
+            <div class="col-md-12">
+
+                <div class="Ccenter">
+                    <a class="btn btn-success" asp-controller="Edit" asp-action="AddNoti" >Add Notification</a>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center wow fadeInDown" data-wow-duration="0.7s" data-wow-delay="0.1s">
+                <h2 class="heading-section mb-5">People Subscribed For Notification</h2>
+            </div>
+
+           
+
+
+            <div class="col-md-12">
+
+                <div class="featured-carousel owl-carousel wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+
+                    @foreach (var i in ViewBag.Sub)
+                    {
+                        
+
+                        <div class="item" style="cursor: pointer;">
+                            <div class="testimony-wrap py-4">
+                                <div class="text">
+                                    
+                                    <div class="d-flex align-items-center">
+                                       
+                                        <div class="pl-3">
+                                            <p class="name">@i.Name</p>
+                                            <span class="position">@i.Email</span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                       
+
+                    }
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</section>

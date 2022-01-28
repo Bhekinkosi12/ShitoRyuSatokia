@@ -145,13 +145,27 @@ namespace ShitoRyuSatokia.Controllers
             return View();
         }
 
-        public IActionResult Notification()
+        public async Task<ActionResult> Notification()
         {
+            UserDatabase usd = new UserDatabase();
+
+            var a = await usd.GetNoti();
+            List<Notify> noti = new List<Notify>();
+
+            a.Reverse();
+            ViewBag.Noty = a[0];
             return View();
         }
 
-        public IActionResult Notifications()
+        public async Task<ActionResult> Notifications()
         {
+            UserDatabase usd = new UserDatabase();
+
+            var a = await usd.GetNoti();
+            List<Notify> noti = new List<Notify>();
+            a.Reverse();
+            ViewBag.Noty = a;
+
             return View();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         }
 

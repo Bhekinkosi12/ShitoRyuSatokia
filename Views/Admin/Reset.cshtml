@@ -6,6 +6,7 @@
 
 
 
+
 <style>
 
     .wrapper {
@@ -229,32 +230,29 @@ input[type=text]:placeholder {
 
 
 
-
-
-
    <div class="wrapper fadeInDown" id="loginn">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Sign In </h2>
+    <h2 class="active"> Reset Password </h2>
     
     <!-- Icon -->
    
 
     <!-- Login Form -->
-    <form asp-controller="Admin" asp-action="OnSignin" method="post">
-      <input type="text" id="login" class="fadeIn second" name="code" placeholder="Code">
+    <form asp-controller="Admin" asp-action="OnReset" method="post">
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Register">
+     
+      <input type="submit" class="fadeIn fourth" value="Get Email Reset">
     </form>
 
     <!-- Remind Passowrd -->
-   
+    
+
+    
+    
 
      
 
   </div>
         </div>
-
-
 

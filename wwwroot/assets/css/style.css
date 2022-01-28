@@ -9189,6 +9189,9 @@ ul.social-network {
 .timeline__event:last-child .timeline__event__icon:before {
     content: none;
 }
+.Ccenter{
+    text-align: center;
+}
 
 @media (max-width: 786px) {
     .timeline__event {

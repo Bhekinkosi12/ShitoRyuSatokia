@@ -32,13 +32,21 @@ namespace ShitoRyuSatokia.Services
         }
         public async Task<List<Notify>> GetNoti()
         {
-            List<Notify> notifies = new List<Notify>();
-
-            var a = (await client.Child("Notify").OnceAsync<Notify>());
-
-            foreach(var i in a)
+                List<Notify> notifies = new List<Notify>();
+            try
             {
-                notifies.Add(i.Object);
+
+
+                var a = (await client.Child("Notify").OnceAsync<Notify>());
+
+                foreach(var i in a)
+                {
+                    notifies.Add(i.Object);
+                }
+            }
+            catch
+            {
+
             }
 
             return notifies;
@@ -59,6 +67,9 @@ namespace ShitoRyuSatokia.Services
         public async Task<List<TouchText>> GetAllText()
         {
             List<TouchText> touches = new List<TouchText>();
+            try
+            {
+
             var list = (await client.Child("Text").OnceAsync<TouchText>()).ToList();
 
             foreach(var i in list)
@@ -66,6 +77,11 @@ namespace ShitoRyuSatokia.Services
                 touches.Add(i.Object);
             }
 
+            }
+            catch
+            {
+
+            }
             return touches;
 
         }
@@ -78,10 +94,19 @@ namespace ShitoRyuSatokia.Services
         {
             List<Notication> notications = new List<Notication>();
 
+            try
+            {
+
             var list = (await client.Child("Subscript").OnceAsync<Notication>()).ToList();
             foreach(var i in list)
             {
                 notications.Add(i.Object);
+            }
+
+            }
+            catch
+            {
+
             }
 
             return notications;
@@ -225,6 +250,8 @@ namespace ShitoRyuSatokia.Services
                 {
                     _list.Add(i.Object);
                 }
+
+                _list.Reverse();
 
                 return await Task.FromResult(_list);
 
